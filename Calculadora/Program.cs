@@ -21,25 +21,35 @@ namespace Calculadora
             Console.WriteLine("Escreva exatamente desta forma: divisao, multiplicacao, soma, subtracao");
             operador = Console.ReadLine();
 
-            Console.WriteLine($"{num1} + {num2} = {num1 + num2} ");
+            /*Console.WriteLine($"{num1} + {num2} = {num1 + num2} ");
             Console.WriteLine($"{num1} + {num2} = {num1 - num2} ");
             Console.WriteLine($"{num1} + {num2} = {num1 / num2} ");
             Console.WriteLine($"{num1} + {num2} = {num1 * num2} ");
-            Console.WriteLine($"{num1} + {num2} = {num1 % num2} ");
+            Console.WriteLine($"{num1} + {num2} = {num1 % num2} ");*/
             
-            /*string divisao;
-            string multiplicacao;
-            string soma;
-            string subtracao;
+            float resultadoDiv, resultadoMult, resultadoSoma, resultadoSubt; //Por padrão o valor é 0 (ZERO)
 
-            if (operador == soma)
+            resultadoDiv = num1 / num2;
+            resultadoMult = num1 * num2; 
+            resultadoSoma = num1 + num2; 
+            resultadoSubt = num1 - num2;
+
+            if (operador == "soma")
             {
-                Console.WriteLine("O Resultado é: " + num1 + num2)
-            }*/
-
-            
-
-
+                Console.WriteLine("O Resultado é: " + resultadoSoma);
+            }
+            else if(operador == "divisao")
+            {
+                Console.WriteLine("O Resultado é: " + resultadoDiv);
+            }
+            else if (operador == "multiplicacao")
+            {
+                Console.WriteLine("O Resultado é: " + resultadoMult);
+            }
+            else if (operador == "subtracao")
+            {
+                Console.WriteLine("O Resultado é: " + resultadoSubt);
+            }
         }
     }
 }

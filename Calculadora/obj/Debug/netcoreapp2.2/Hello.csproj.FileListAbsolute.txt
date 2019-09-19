@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Calculadora\obj\Debu
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Calculadora\obj\Debug\netcoreapp2.2\Hello.AssemblyInfo.cs
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Calculadora\obj\Debug\netcoreapp2.2\Hello.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Calculadora\obj\Debug\netcoreapp2.2\Hello.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\obj\Debug\netcoreapp2.2\Hello.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\bin\Debug\netcoreapp2.2\Hello.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\bin\Debug\netcoreapp2.2\Hello.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\bin\Debug\netcoreapp2.2\Hello.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\bin\Debug\netcoreapp2.2\Hello.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\Calculadora\bin\Debug\netcoreapp2.2\Hello.pdb
