@@ -6,11 +6,11 @@ namespace Calculadora
     {
         static void Main(string[] args)
         {
-            float num1 = 0;
-            float num2 = 0;
+            double num1, num2;
 
             string operador;
-
+            Console.WriteLine("Para percentual, primeiro digite a porcentagem e depois o número.");
+            Console.WriteLine("Modelo: X% de X.");
             Console.WriteLine("Digite um número.");
             num1 = Convert.ToInt32 (Console.ReadLine()); //int.Parse (Converte automáticamente)
 
@@ -18,7 +18,7 @@ namespace Calculadora
             num2 = Convert.ToInt32 (Console.ReadLine());
 
             Console.WriteLine("Digite o operador aritmético.");
-            Console.WriteLine("Escreva exatamente desta forma: divisao, multiplicacao, soma, subtracao");
+            Console.WriteLine("Escolha entre: + , - , / , * , % .");
             operador = Console.ReadLine();
 
             /*Console.WriteLine($"{num1} + {num2} = {num1 + num2} ");
@@ -27,29 +27,35 @@ namespace Calculadora
             Console.WriteLine($"{num1} + {num2} = {num1 * num2} ");
             Console.WriteLine($"{num1} + {num2} = {num1 % num2} ");*/
             
-            float resultadoDiv, resultadoMult, resultadoSoma, resultadoSubt; //Por padrão o valor é 0 (ZERO)
+            double resultadoDiv, resultadoMult, resultadoSoma, resultadoSubt, resultadoPerc; //Por padrão o valor é 0 (ZERO)
 
             resultadoDiv = num1 / num2;
             resultadoMult = num1 * num2; 
             resultadoSoma = num1 + num2; 
             resultadoSubt = num1 - num2;
+            resultadoPerc = (num1 / 100) * num2;
 
-            if (operador == "soma")
+            if(operador == "+")
             {
                 Console.WriteLine("O Resultado é: " + resultadoSoma);
             }
-            else if(operador == "divisao")
+            else if (operador == "/")
             {
                 Console.WriteLine("O Resultado é: " + resultadoDiv);
             }
-            else if (operador == "multiplicacao")
+            else if (operador == "*")
             {
                 Console.WriteLine("O Resultado é: " + resultadoMult);
             }
-            else if (operador == "subtracao")
+            else if (operador == "-")
             {
                 Console.WriteLine("O Resultado é: " + resultadoSubt);
             }
+            else if (operador == "%")
+            {
+                Console.WriteLine("O Resultado é: " + resultadoPerc);
+            }
+            //trycatch
         }
     }
 }

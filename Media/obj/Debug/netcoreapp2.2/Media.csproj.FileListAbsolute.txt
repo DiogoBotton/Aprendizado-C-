@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Media\obj\Debug\netc
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Media\obj\Debug\netcoreapp2.2\Media.AssemblyInfo.cs
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Media\obj\Debug\netcoreapp2.2\Media.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Media\obj\Debug\netcoreapp2.2\Media.pdb
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\bin\Debug\netcoreapp2.2\Media.deps.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\bin\Debug\netcoreapp2.2\Media.runtimeconfig.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\bin\Debug\netcoreapp2.2\Media.runtimeconfig.dev.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\bin\Debug\netcoreapp2.2\Media.dll
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\bin\Debug\netcoreapp2.2\Media.pdb
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.csprojAssemblyReference.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.csproj.CoreCompileInputs.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.AssemblyInfoInputs.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.AssemblyInfo.cs
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.dll
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\media\obj\Debug\netcoreapp2.2\Media.pdb
