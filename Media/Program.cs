@@ -8,9 +8,10 @@ namespace Media
         {
             double num1, num2, num3, num4, media;
             
+            
             Console.Write("Digite o 1° número: ");
             num1 = double.Parse(Console.ReadLine()); //ReadLine retorna STRING (texto)
-                                                    //Forçar CONVERSÂO de STRING para o tipo de váriavel, no caso double.
+                                                    //Forçar CONVERSÂO de STRING para o tipo de váriavel, no caso double.                                     
             Console.Write("Digite o 2° número: ");
             num2 = double.Parse(Console.ReadLine());
 
