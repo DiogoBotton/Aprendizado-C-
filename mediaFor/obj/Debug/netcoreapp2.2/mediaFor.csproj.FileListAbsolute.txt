@@ -1,0 +1,11 @@
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\bin\Debug\netcoreapp2.2\mediaFor.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\bin\Debug\netcoreapp2.2\mediaFor.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\bin\Debug\netcoreapp2.2\mediaFor.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\bin\Debug\netcoreapp2.2\mediaFor.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\bin\Debug\netcoreapp2.2\mediaFor.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mediaFor\obj\Debug\netcoreapp2.2\mediaFor.pdb

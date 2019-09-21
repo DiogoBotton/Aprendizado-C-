@@ -686,30 +686,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\42299106812\\.nuget\\packages\\": {},
+    "C:\\Users\\Diogo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj",
+      "projectUniqueName": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
       "projectName": "paresImpares",
-      "projectPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj",
-      "packagesPath": "C:\\Users\\42299106812\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\obj\\",
+      "projectPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
+      "packagesPath": "C:\\Users\\Diogo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\42299106812\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Diogo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

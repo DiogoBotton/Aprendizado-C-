@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\pares
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\paresImpares\bin\Debug\netcoreapp2.2\paresImpares.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\paresImpares\obj\Debug\netcoreapp2.2\paresImpares.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\paresImpares\obj\Debug\netcoreapp2.2\paresImpares.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\bin\Debug\netcoreapp2.2\paresImpares.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\bin\Debug\netcoreapp2.2\paresImpares.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\bin\Debug\netcoreapp2.2\paresImpares.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\bin\Debug\netcoreapp2.2\paresImpares.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\bin\Debug\netcoreapp2.2\paresImpares.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\paresimpares\obj\Debug\netcoreapp2.2\paresImpares.pdb
