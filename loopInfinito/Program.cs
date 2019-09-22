@@ -38,10 +38,7 @@ namespace loopInfinito
                         break;
                     }
                     Console.WriteLine($"O número é {num}");
-                }
-                
-                    
-                
+                }  
             }
 
             //Contagem utilizando DO / WHILE
@@ -72,6 +69,14 @@ namespace loopInfinito
                     break;
                 Console.WriteLine(i);
             }
+
+            //Continue
+            for (int i = 0; i < 10; i++) { 
+                if (i == 5)             //Mostra a sequência de números de 0 à 10 em exceção do 5.
+                    continue;
+                Console.WriteLine(i);
+            }
+
         }
     }
 }
