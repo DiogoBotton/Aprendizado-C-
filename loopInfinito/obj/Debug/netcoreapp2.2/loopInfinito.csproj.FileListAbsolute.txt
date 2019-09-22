@@ -1,0 +1,11 @@
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\bin\Debug\netcoreapp2.2\loopInfinito.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\bin\Debug\netcoreapp2.2\loopInfinito.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\bin\Debug\netcoreapp2.2\loopInfinito.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\bin\Debug\netcoreapp2.2\loopInfinito.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\bin\Debug\netcoreapp2.2\loopInfinito.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loopInfinito\obj\Debug\netcoreapp2.2\loopInfinito.pdb

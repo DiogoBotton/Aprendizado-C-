@@ -31,7 +31,7 @@ namespace paresImpares {
                 Console.WriteLine ("1. Programa: Digite paresOUimpares para ver sequencias de números ìmpares e pares de 0 à 100. ");
                 Console.WriteLine ("2. Programa: Digite numeros e siga as instruções. Sobre a representação de cada número digitado no console (se é ímpar ou par).");
                 Console.WriteLine ("3. Programa: Digite tabuada para ver a tabuada do 1 ao 10.");
-                Console.WriteLine ("5. Opção: OU digite 0 para fechar o programa.");
+                Console.WriteLine ("4. Opção: OU digite 0 para fechar o programa.");
                 escolherPrograma = Console.ReadLine ();
 
                 //Aqui abre um bloco de instruções. (paresOUimpares)---------------------------------------
@@ -42,7 +42,7 @@ namespace paresImpares {
                         while ((parImpar != 0)) {
                         Console.WriteLine ("1. Opção: Digite 1 para ver os números ÍMPARES de 0 a 100.");
                         Console.WriteLine ("2. Opção: Digite 2 para ver os números PARES de 0 a 100.");
-                        Console.WriteLine ("5. Opção: OU digite 0 para VOLTAR ao menu.");
+                        Console.WriteLine ("3. Opção: OU digite 0 para VOLTAR ao menu.");
                         parImpar = Convert.ToInt32(Console.ReadLine());
 
                         if (parImpar == 1) {
@@ -172,7 +172,7 @@ namespace paresImpares {
 
 
             }//Estrutura de repetição para o programa
-
+            Console.WriteLine("Programa finalizado.");
 
 
 

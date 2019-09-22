@@ -23,7 +23,7 @@ namespace Tabuada {
             //Tabuada do 5 usando FOR
 
             int tabuada = 1;
-            while ((tabuada >= 1) && (tabuada <= 10)) {
+            while ((tabuada >= 1) && (tabuada <= 10)) { //Redundância nesta estrutura while
                 
                 do {
                     Console.WriteLine ("Qual tabuada você deseja ver? Digite apenas o número (de 1 a 10).");

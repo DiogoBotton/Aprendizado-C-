@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj": {}
+    "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\loopinfinito\\loopInfinito.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj": {
+    "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\loopinfinito\\loopInfinito.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
-        "projectName": "paresImpares",
-        "projectPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
+        "projectUniqueName": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\loopinfinito\\loopInfinito.csproj",
+        "projectName": "loopInfinito",
+        "projectPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\loopinfinito\\loopInfinito.csproj",
         "packagesPath": "C:\\Users\\Diogo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\paresimpares\\obj\\",
+        "outputPath": "C:\\Users\\Diogo\\Documents\\Aprendizado C#\\Aprendizado-C-\\loopinfinito\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
