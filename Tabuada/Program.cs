@@ -104,7 +104,15 @@ namespace Tabuada {
                 } while ((tabuada < 1) || (tabuada > 10));
             }
 
-            //Tabuada do 1 ao 10 usando FOR
+            //Tabuada do 1 ao 10 usando FOR (FEITO PELO PROFESSOR)
+
+            for (int i = 1; i <= 10; i++){
+                for (int j = 1; j <= 10; j++){
+                    Console.Write($"{i,-2} * {j, -2} = {i * j}");
+                }
+                Console.WriteLine(); //Pular Linha após terminar o primeiro loop de i.
+            }
+
         }
     }
 }
