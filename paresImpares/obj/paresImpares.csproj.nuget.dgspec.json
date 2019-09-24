@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj": {}
+    "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresimpares\\paresImpares.csproj": {}
   },
   "projects": {
-    "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj": {
+    "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresimpares\\paresImpares.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj",
+        "projectUniqueName": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
         "projectName": "paresImpares",
-        "projectPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\paresImpares.csproj",
+        "projectPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresimpares\\paresImpares.csproj",
         "packagesPath": "C:\\Users\\42299106812\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresImpares\\obj\\",
+        "outputPath": "C:\\Users\\42299106812\\Documents\\Aprendizado C# - Exercícios\\Aprendizado-C-\\paresimpares\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

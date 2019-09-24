@@ -65,7 +65,7 @@ namespace calculopoligono
                             Console.Write("Digite o raio:");
                             lado1 = Convert.ToDouble(Console.ReadLine());
 
-                            circulo = (2 * 3.14) * (lado1 * lado1);
+                            circulo = (2 * 3.14) * (lado1 * lado1); //pi raio ao quadrado
 
                             Console.WriteLine($"A área do círculo é: " + circulo);
                             Console.WriteLine("OU digite 0 para VOLTAR ao menu.");
@@ -117,6 +117,11 @@ namespace calculopoligono
                             Console.WriteLine($"A área do triângulo é: " + triangulo);
                             Console.WriteLine("OU digite 0 para VOLTAR ao menu.");
                             break;
+
+                        case "bhaskara":
+
+
+                        break;
 
 
 

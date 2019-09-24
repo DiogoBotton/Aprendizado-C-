@@ -15,10 +15,10 @@ namespace nascimento
 
                     Console.WriteLine("Instrução: Qual sua data de nascimento (digite apenas o ano).");
                     ano = Convert.ToInt32(Console.ReadLine());
-                    if ((ano < 0) || (ano > 2019)){
+                    if ((ano < 1919) || (ano > 2019)){
                         Console.WriteLine("Data inválida, digite um ano de 1919 à 2019.");
                     }
-                }while ((ano < 0) || (ano > 2019));
+                }while ((ano < 1919) || (ano > 2019));
 
                     idade = 2019 - ano;
 
