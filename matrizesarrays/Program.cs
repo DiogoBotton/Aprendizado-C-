@@ -14,10 +14,20 @@ namespace matrizesarrays
 
             numeros_loteria = new int[6];
             */
-            //declarando e instanciando em apenas uma linha e na sequência(não obrigatório) acrescenta elementos dentro dele.
-            int[] numeros_loteria = new int[6] {1, 2, 3, 4, 5, 6};
-                                              //0, 1, 2, 3, 4, 5  
+            //declarando e instanciando em apenas uma linha e na sequência(não obrigatório o new int neste caso) acrescenta elementos dentro dele.
+            
+            //Unidimensional (VETOR)
+            int[] numeros_loteria = new int[6] {1, 2, 3, 4, 5, 6}; //  posições
+                                              //0, 1, 2, 3, 4, 5  Índices
             int valor = 0;
+
+            //bi dimensional (MATRIZ)
+
+            int[,] numeros = new int [3,5];
+
+            // Matriz de matrizes
+
+            int [][] numeros2 = new int[2][];
             
             //dizendo para o usuário mudar o conteúdo de um elemento especificado 
             
