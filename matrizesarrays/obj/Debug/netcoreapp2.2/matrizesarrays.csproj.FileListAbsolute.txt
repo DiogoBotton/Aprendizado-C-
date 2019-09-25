@@ -1,0 +1,11 @@
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\bin\Debug\netcoreapp2.2\matrizesarrays.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\bin\Debug\netcoreapp2.2\matrizesarrays.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\bin\Debug\netcoreapp2.2\matrizesarrays.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\bin\Debug\netcoreapp2.2\matrizesarrays.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\bin\Debug\netcoreapp2.2\matrizesarrays.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizesarrays\obj\Debug\netcoreapp2.2\matrizesarrays.pdb
