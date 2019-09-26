@@ -1,11 +1,8 @@
-﻿using System;
+using System;
 
-namespace matrizparesimpares
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace matrizparesimpares {
+    class Program {
+        static void Main (string[] args) {
             int[] numeros_armazenados = new int[6];
 
             int par = 0;
@@ -54,32 +51,33 @@ namespace matrizparesimpares
             //À FAZER: 
 
             int[] media_temperaturas = new int[12];
-            int calculo = 0;
             int maior = 0;
             int menor = 0;
 
-            for (int j = 0; j < 12; j++)
-            {
-                
-                for (int i = 0; i < 12; i++)
-                {
+            //for (int j = 0; j < 12; j++) {
 
-                    Console.WriteLine($"Digite a média da temperatura do mês {i + 1}:");
-                    media_temperaturas[i] = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < 12; i++) {
 
-                }
-                if (media_temperaturas[] > media_temperaturas[j]){
-                    maior = ;
-                    Console.WriteLine();
-                }
-
+                Console.WriteLine ($"Digite a média da temperatura do mês {i + 1}:");
+                media_temperaturas[i] = Convert.ToInt32 (Console.ReadLine ());
             }
-            Console.WriteLine($"A maior média é: {maior} || A menor média é: {menor}");
+            for (int j = 0; j < 12; j++) {
 
+                for (int i = 1; i < 12; i++) {
 
-
-
-
+                    if (media_temperaturas[j] > media_temperaturas[i] ) {
+                        maior = media_temperaturas[j];
+                        menor = media_temperaturas[i];
+                        
+                    }
+                    else {
+                        maior = media_temperaturas[i];
+                        menor = media_temperaturas[j];
+                        
+                    }
+                }
+            }
+            Console.WriteLine ($"A maior média é: {maior} || A menor média é: {menor}");
 
         }
     }

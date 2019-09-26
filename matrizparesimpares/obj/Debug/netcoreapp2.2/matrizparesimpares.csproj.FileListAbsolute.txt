@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\matri
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\obj\Debug\netcoreapp2.2\matrizparesimpares.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\matrizparesimpares\bin\Debug\netcoreapp2.2\matrizparesimpares.pdb
