@@ -1,8 +1,11 @@
-using System;
+﻿using System;
 
-namespace matrizparesimpares {
-    class Program {
-        static void Main (string[] args) {
+namespace matrizparesimpares
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             int[] numeros_armazenados = new int[6];
 
             int par = 0;
@@ -50,34 +53,38 @@ namespace matrizparesimpares {
 
             //À FAZER: 
 
-            int[] media_temperaturas = new int[12];
-            int maior = 0;
-            int menor = 0;
+            double[] media_temperaturas = new double[12];
+            double maior = 0;
+            double menor = 0; 
 
-            //for (int j = 0; j < 12; j++) {
+            
 
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < 12; i++)
+            {
 
-                Console.WriteLine ($"Digite a média da temperatura do mês {i + 1}:");
-                media_temperaturas[i] = Convert.ToInt32 (Console.ReadLine ());
+                Console.WriteLine($"Digite a média da temperatura do mês {i + 1}:");
+                media_temperaturas[i] = Convert.ToDouble(Console.ReadLine());
+
             }
-            for (int j = 0; j < 12; j++) {
 
-                for (int i = 1; i < 12; i++) {
+            maior = media_temperaturas[0]; //Dizendo que as variaveis maior e menor recebem o primeiro índice da matriz.
+            menor = media_temperaturas[0];
 
-                    if (media_temperaturas[j] > media_temperaturas[i] ) {
-                        maior = media_temperaturas[j];
-                        menor = media_temperaturas[i];
-                        
-                    }
-                    else {
-                        maior = media_temperaturas[i];
-                        menor = media_temperaturas[j];
-                        
-                    }
+            for (int i = 0; i < 12; i++)
+            {
+
+                if (media_temperaturas[i] > maior)  //Na primeira repetição: Compara o primeiro número da matriz (índice 0) com a varivael MAIOR (que contem o valor do indice 0), falso pois os dois são iguais. 
+                {                                   //Na segunda repetição e assim por diante: Compara o índice 1 (se maior) com a variavel MAIOR (que contem o valor do indice 0), se verdadeiro, o valor da variavel[...] 
+                    maior = media_temperaturas[i];  //[...]é substituido pelo valor do indice 1, e assim por diante.
+                }
+                
+                else if (media_temperaturas[i] < menor)
+                {
+                    menor = media_temperaturas[i];
                 }
             }
-            Console.WriteLine ($"A maior média é: {maior} || A menor média é: {menor}");
+
+            Console.WriteLine($"A maior média é: {maior} || A menor média é: {menor}");
 
         }
     }

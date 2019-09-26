@@ -15,7 +15,8 @@ namespace codingdojo
             qtd = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Digite a altura:");
             alt = Convert.ToInt32(Console.ReadLine());
-            // for (int j = 0; j < qtd; j++){
+            
+            // Com while
             while (qtd != 0)
             {
                 for (int i = 0; i < alt; i++)
@@ -26,6 +27,18 @@ namespace codingdojo
                 ast2 = "*"; // declarando novamente com quantos asteriscos ele irá iniciar a próxima repetição (for), para não iniciar novamente com a mesma quantidade do loop anterior.
                 qtd--; //
             }
+
+            // Com FOR
+            /*
+            for (int i = 0; i < qtd; i++){
+                for (int j = 0; j < alt; j++){
+                    Console.WriteLine(ast2);
+                    ast2 += ast;
+                }
+                ast2 = "*";
+            }
+            */
+
         }
     }
 }
