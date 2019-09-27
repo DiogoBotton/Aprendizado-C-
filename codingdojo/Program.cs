@@ -12,7 +12,7 @@ namespace codingdojo
             string ast2 = "*";
 
             Console.WriteLine("Digite um número:");
-            qtd = Convert.ToInt32(Console.ReadLine());
+            qtd = Convert.ToInt32(Console.ReadLine()); 
             Console.WriteLine("Digite a altura:");
             alt = Convert.ToInt32(Console.ReadLine());
             

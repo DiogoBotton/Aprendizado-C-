@@ -85,6 +85,8 @@ namespace matrizparesimpares
 
             Console.WriteLine($"A maior média é: {maior} || A menor média é: {menor}");
 
+            //Bubble Sort || Quick Sort
+
         }
     }
 }
