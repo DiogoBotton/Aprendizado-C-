@@ -30,9 +30,8 @@ namespace matrizparesimpares
             }
             */
 
-            //COM MATRIZES / VETORES
+            //COM MATRIZES / VETORES (quantos numeros pares e impares digitados pelo usuário)
 
-            /*
             for (int i = 0; i < 6; i++)
             {
 
@@ -49,9 +48,9 @@ namespace matrizparesimpares
                 }
             }
             Console.WriteLine($"Números pares: {par} || Números ímpares: {impar}");
-            */
+            
 
-            //À FAZER: 
+            //Temperaturas (mostrar a maior e menor média)
 
             double[] media_temperaturas = new double[12];
             double maior = 0;
