@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\mcbon
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\bin\Debug\netcoreapp2.2\McBonalds.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\mcbonalds\obj\Debug\netcoreapp2.2\McBonalds.pdb

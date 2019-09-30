@@ -41,8 +41,8 @@ namespace aprendendoClassesMetodos
             Console.WriteLine("Nome: " + aluno3.Nome);
             Console.WriteLine("Curso: " + aluno3.Curso);
             Console.WriteLine("CPF: " + aluno3.Cpf);
-            foreach (int n in aluno3.getNotas()){
-                Console.Write(n + " ");
+            foreach (int n in aluno3.getNotas()){ //Para cada n de aluno3.getNotas(), imprima seu conteúdo.
+                Console.Write(n + " "); //neste caso, o "n" seria o indice de cada elemento da matriz, que automaticamente traz seu conteúdo.
             }
             Console.WriteLine();
         }
