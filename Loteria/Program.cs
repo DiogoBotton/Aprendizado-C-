@@ -10,14 +10,13 @@ namespace Loteria
             int[] loteria_sorteio = new int[6];
 
             Console.Clear();
-            System.Console.WriteLine("Bem Vindo ao sisteminha de loteria do Diogão!");
+            System.Console.WriteLine("Bem Vindo ao sisteminha jogo do bixo!");
 
             for (int i = 0; i < 6; i++){
             
             System.Console.WriteLine($"Escolha o {i + 1}° número de 0 à 20.");
             numeros_loteria[i] = Convert.ToInt32(Console.ReadLine());
             }
-            
             System.Console.WriteLine("Aperte ENTER para sortear os números.");
             Console.ReadLine();
             Console.Clear();

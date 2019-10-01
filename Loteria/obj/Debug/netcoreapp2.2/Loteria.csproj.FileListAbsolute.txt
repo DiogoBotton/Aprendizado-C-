@@ -9,3 +9,14 @@ C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcore
 C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.AssemblyInfo.cs
 C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.dll
 C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.pdb
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.deps.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.runtimeconfig.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.runtimeconfig.dev.json
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.dll
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.pdb
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.csprojAssemblyReference.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.csproj.CoreCompileInputs.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.AssemblyInfoInputs.cache
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.AssemblyInfo.cs
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.dll
+C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.pdb

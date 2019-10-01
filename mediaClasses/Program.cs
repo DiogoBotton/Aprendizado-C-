@@ -13,7 +13,10 @@ namespace mediaClasses {
             for (int n = 0; n < 4; n++) {//Por que com foreach não conta/aumenta os números? n + 1.
                 Console.WriteLine ($"Digite a {n + 1}° nota do aluno {nome}.");
                 notas[n] = Convert.ToDouble (Console.ReadLine ());
-
+                /*
+                mediaAluno media = new mediaAluno(); 
+                media.Nome = ""; SET ||  string g = media.Nome; GET
+                */
                 soma += notas[n];
 
                 if ((notas[n] < 0) || (notas[n] > 10)) {
