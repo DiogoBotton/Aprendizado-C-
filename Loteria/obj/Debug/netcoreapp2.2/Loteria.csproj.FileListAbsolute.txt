@@ -1,0 +1,11 @@
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\bin\Debug\netcoreapp2.2\Loteria.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\loteria\obj\Debug\netcoreapp2.2\Loteria.pdb

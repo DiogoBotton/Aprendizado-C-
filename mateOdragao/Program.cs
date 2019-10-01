@@ -66,9 +66,9 @@ namespace mateOdragao
                         Console.Clear();
 
                         bool jogadorAtacaPrimeiro = guerreiro.Destreza > dragao.Destreza ? true : false; //ler como uma pergunta. Depois do (?) é a condição.
-
+                                                                                                        //Bloco verdade                               Bloco falso
                         int poderAtaqueGuerreiro = guerreiro.Forca > guerreiro.Inteligencia ? guerreiro.Forca + guerreiro.Destreza : guerreiro.Inteligencia + guerreiro.Destreza;
-                        bool jogadorNaoCorreu = true;
+                        bool jogadorNaoCorreu = true;   
                         
 
                         if (jogadorAtacaPrimeiro)
