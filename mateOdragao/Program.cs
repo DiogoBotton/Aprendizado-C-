@@ -1,33 +1,28 @@
 ﻿using System;
 using mateOdragao.Models;
 
-namespace mateOdragao
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace mateOdragao {
+    class Program {
+        static void Main (string[] args) {
             bool jogadorNaodesistiu = true;
-            do
-            {
-                Console.Clear();
-                System.Console.WriteLine("==============================");
-                System.Console.WriteLine("         Mate o Dragão!");
-                System.Console.WriteLine("==============================");
+            do {
+                Console.Clear ();
+                System.Console.WriteLine ("==============================");
+                System.Console.WriteLine ("         Mate o Dragão!");
+                System.Console.WriteLine ("==============================");
 
-                System.Console.WriteLine("1 - Iniciar Jogo.");
-                System.Console.WriteLine("0 - Sair do Jogo.");
+                System.Console.WriteLine ("1 - Iniciar Jogo.");
+                System.Console.WriteLine ("0 - Sair do Jogo.");
 
-                string opcao = Console.ReadLine();
+                string opcao = Console.ReadLine ();
 
-                switch (opcao)
-                {
+                switch (opcao) {
                     case "1":
-                        Console.Clear();
+                        Console.Clear ();
 
-                        Guerreiro guerreiro = CriarGuerreiro(); //
+                        Guerreiro guerreiro = CriarGuerreiro (); //Método que cria objeto
 
-                        Dragao dragao = new Dragao();
+                        Dragao dragao = new Dragao ();
                         dragao.Nome = "Dragonildo";
                         dragao.Forca = 5;
                         dragao.Destreza = 1;
@@ -35,201 +30,206 @@ namespace mateOdragao
                         dragao.Vida = 300;
 
                         /*Inicio - Primeiro Diálogo */
-                        CriarDialogo(guerreiro.Nome, $"{dragao.Nome}, chegou sua hora, vim lhe derrotar!"); //Chamada de métodos.
-                        CriarDialogo(dragao.Nome, "Humana tolinha, quem pensas que é?");
+                        CriarDialogo (guerreiro.Nome, $"{dragao.Nome}, chegou sua hora, vim lhe derrotar!"); //Chamada de métodos.
+                        CriarDialogo (dragao.Nome, "Humana tolinha, quem pensas que é?");
                         /*Fim - Primeiro Diálogo */
 
-                        Prosseguir();
+                        Prosseguir ();
 
                         /*Inicio - Segundo Diálogo */
-                        CriarDialogo(guerreiro.Nome, $"Eu sou {guerreiro.Nome}! Da casa {guerreiro.Sobrenome}, ó criatura morfética.");
-                        CriarDialogo(guerreiro.Nome, $"Vim de {guerreiro.CidadeNatal} para derrotarte-e mostrar meu valor!");
-                        CriarDialogo(dragao.Nome, "QUEM? DE ONDE? Bom, que seja... Fritar-te-ei e devorar-te-ei, primata insolente!");
-                        CriarDialogo("mestre", "Ta na hora do Show!");
+                        CriarDialogo (guerreiro.Nome, $"Eu sou {guerreiro.Nome}! Da casa {guerreiro.Sobrenome}, ó criatura morfética.");
+                        CriarDialogo (guerreiro.Nome, $"Vim de {guerreiro.CidadeNatal} para derrotar-te e mostrar meu valor!");
+                        CriarDialogo (dragao.Nome, "QUEM? DE ONDE? Bom, que seja... Fritar-te-ei e devorar-te-ei, primata insolente!");
+                        CriarDialogo ("mestre", "Ta na hora do Show!");
 
-                        Prosseguir();
+                        Prosseguir ();
 
                         /*Fim - Segundo Diálogo */
 
-
                         bool jogadorAtacaPrimeiro = guerreiro.Destreza > dragao.Destreza ? true : false; //ler como uma pergunta. Depois do (?) é a condição.
-                                                                                                         //Bloco verdade                               Bloco falso
+                                                                                                        //Bloco verdade                               Bloco falso
                         int poderAtaqueGuerreiro = guerreiro.Forca > guerreiro.Inteligencia ? guerreiro.Forca + guerreiro.Destreza : guerreiro.Inteligencia + guerreiro.Destreza;
                         bool jogadorNaoCorreu = true;
 
+                        if (jogadorAtacaPrimeiro) {
+                            System.Console.WriteLine ("*** Turno do Guerreiro ***");
+                            System.Console.WriteLine ("Escolha uma ação:");
+                            System.Console.WriteLine ("1 - Atacar.");
+                            System.Console.WriteLine ("2 - Fugir.");
+                            string opcaoBatalhaJogador = Console.ReadLine ();
 
-                        if (jogadorAtacaPrimeiro)
-                        {
-                            System.Console.WriteLine("*** Turno do Guerreiro ***");
-                            System.Console.WriteLine("Escolha uma ação:");
-                            System.Console.WriteLine("1 - Atacar.");
-                            System.Console.WriteLine("2 - Fugir.");
-                            string opcaoBatalhaJogador = Console.ReadLine();
+                            Console.Clear ();
 
-                            switch (opcaoBatalhaJogador)
-                            {
+                            switch (opcaoBatalhaJogador) {
                                 case "1":
-                                    Random geradorNumeroAleatorio = new Random();   //Gerador de números aleatórios objeto Random()
-                                    int numeroAleatorioJogador = geradorNumeroAleatorio.Next(0, 5);
-                                    int numeroAleatorioDragao = geradorNumeroAleatorio.Next(0, 5);
+                                    Random geradorNumeroAleatorio = new Random (); //Gerador de números aleatórios objeto Random()
+                                    int numeroAleatorioJogador = geradorNumeroAleatorio.Next (0, 5);
+                                    int numeroAleatorioDragao = geradorNumeroAleatorio.Next (0, 5);
 
                                     int guerreiroDestrezaTotal = guerreiro.Destreza + numeroAleatorioJogador;
                                     int dragaoDestrezaTotal = dragao.Destreza + numeroAleatorioDragao;
 
-                                    if (guerreiroDestrezaTotal > dragaoDestrezaTotal)
-                                    {
-                                        System.Console.WriteLine($"{guerreiro.Nome.ToUpper()}: Toma essa, lagartixa MALDJEETA!");
+                                    if (guerreiroDestrezaTotal > dragaoDestrezaTotal) {
+                                        CriarDialogo (guerreiro.Nome, "Toma essa, lagartixa MALDJEETA!");
                                         dragao.Vida = dragao.Vida - (poderAtaqueGuerreiro + 5); //5 é a força da arma.  || dragao.Vida -= (poderAtaqueGuerreiro + 5)
 
-                                        System.Console.WriteLine($"HP Dragão: {dragao.Vida}");
-                                        System.Console.WriteLine($"HP Guerreiro: {guerreiro.Vida}");
+                                        System.Console.WriteLine ($"HP Dragão: {dragao.Vida}");
+                                        System.Console.WriteLine ($"HP Guerreiro: {guerreiro.Vida}");
+                                    } else {
+                                        CriarDialogo(dragao.Nome,"Errrou troxa!");
+                                        System.Console.WriteLine ($"HP Dragão: {dragao.Vida}");
+                                        System.Console.WriteLine ($"HP Guerreiro: {guerreiro.Vida}");
                                     }
-                                    else
-                                    {
-                                        System.Console.WriteLine($"{dragao.Nome.ToUpper()}: Errrou troxa!");
-                                    }
 
-                                    System.Console.WriteLine();
+                                    System.Console.WriteLine ();
 
-                                    System.Console.WriteLine("Aperte ENTER para prosseguir.");
-                                    Console.ReadLine();
-
+                                    System.Console.WriteLine ("Aperte ENTER para prosseguir.");
+                                    Console.ReadLine ();
 
                                     break;
                                 case "2":
-                                    System.Console.WriteLine($"{guerreiro.Nome.ToUpper()}: Eu não sou pareo para seu poder! Estou indo embora.");
-                                    System.Console.WriteLine($"{dragao.Nome.ToUpper()}: Humana desprezível!");
+                                    CriarDialogo (guerreiro.Nome, "Eu não sou pareo para seu poder! Estou indo embora.");
+                                    CriarDialogo (dragao.Nome, "Humana desprezível!");
                                     jogadorNaoCorreu = false;
+                                    Prosseguir();
                                     break;
 
                             }
 
                         }
 
-                        while ((guerreiro.Vida > 0) && (dragao.Vida > 0) && jogadorNaoCorreu)
-                        {
+                        while ((guerreiro.Vida > 0) && (dragao.Vida > 0) && jogadorNaoCorreu) {
                             //VEZ DO DRAGÃO
-                            Console.Clear();
-                            System.Console.WriteLine("*** Turno Dragão ***");
-                            System.Console.WriteLine("O dragão tentou te atacar.");
+                            Console.Clear ();
+                            System.Console.WriteLine ("*** Turno Dragão ***");
+                            System.Console.WriteLine ("O dragão tentou te atacar.");
 
-
-                            Random geradorNumeroAleatorio = new Random();   //Gerador de números aleatórios objeto Random()
-                            int numeroAleatorioJogador = geradorNumeroAleatorio.Next(0, 5);
-                            int numeroAleatorioDragao = geradorNumeroAleatorio.Next(0, 5);
-
+                            Random geradorNumeroAleatorio = new Random (); //Gerador de números aleatórios objeto Random()
+                            int numeroAleatorioJogador = geradorNumeroAleatorio.Next (0, 5);
+                            int numeroAleatorioDragao = geradorNumeroAleatorio.Next (0, 5);
 
                             int guerreiroDestrezaTotal = guerreiro.Destreza + numeroAleatorioJogador;
                             int dragaoDestrezaTotal = dragao.Destreza + numeroAleatorioDragao;
 
-                            if (dragaoDestrezaTotal > guerreiroDestrezaTotal)
-                            {
-                                System.Console.WriteLine($"{dragao.Nome.ToUpper()}: Leva essa pra ficar esperta, humana...");
+                            if (dragaoDestrezaTotal > guerreiroDestrezaTotal) {
+                                System.Console.WriteLine ($"{dragao.Nome.ToUpper()}: Leva essa pra ficar esperta, humana...");
                                 guerreiro.Vida -= dragao.Forca;
 
-                                System.Console.WriteLine($"HP Dragão: {dragao.Vida}");
-                                System.Console.WriteLine($"HP Guerreiro: {guerreiro.Vida}");
-                            }
-                            else
-                            {
-                                System.Console.WriteLine($"{guerreiro.Nome.ToUpper()}: Dragãozinho cego! Você errou feio!");
+                                System.Console.WriteLine ($"HP Dragão: {dragao.Vida}");
+                                System.Console.WriteLine ($"HP Guerreiro: {guerreiro.Vida}");
+                            } else {
+                                System.Console.WriteLine ($"{guerreiro.Nome.ToUpper()}: Dragãozinho cego! Você errou feio!");
+
+                                System.Console.WriteLine ($"HP Dragão: {dragao.Vida}");
+                                System.Console.WriteLine ($"HP Guerreiro: {guerreiro.Vida}");
                             }
 
-                            Prosseguir();
+                            Prosseguir ();
 
                             //VEZ DO GUERREIRO
-                            System.Console.WriteLine("*** Turno do Guerreiro ***");
-                            System.Console.WriteLine("Escolha uma ação:");
-                            System.Console.WriteLine("1 - Atacar.");
-                            System.Console.WriteLine("2 - Fugir.");
-                            string opcaoBatalhaJogador = Console.ReadLine();
+                            System.Console.WriteLine ("*** Turno do Guerreiro ***");
+                            System.Console.WriteLine ("Escolha uma ação:");
+                            System.Console.WriteLine ("1 - Atacar.");
+                            System.Console.WriteLine ("2 - Fugir.");
+                            string opcaoBatalhaJogador = Console.ReadLine ();
 
-                            switch (opcaoBatalhaJogador)
-                            {
+                            Console.Clear ();
+
+                            switch (opcaoBatalhaJogador) {
                                 case "1":
-                                    geradorNumeroAleatorio = new Random();
-                                    numeroAleatorioJogador = geradorNumeroAleatorio.Next(0, 5);
-                                    numeroAleatorioDragao = geradorNumeroAleatorio.Next(0, 5);
+                                    geradorNumeroAleatorio = new Random ();
+                                    numeroAleatorioJogador = geradorNumeroAleatorio.Next (0, 5);
+                                    numeroAleatorioDragao = geradorNumeroAleatorio.Next (0, 5);
 
                                     guerreiroDestrezaTotal = guerreiro.Destreza + numeroAleatorioJogador;
                                     dragaoDestrezaTotal = dragao.Destreza + numeroAleatorioDragao;
 
-                                    if (guerreiroDestrezaTotal > dragaoDestrezaTotal)
-                                    {   
-                                        CriarDialogo(guerreiro.Nome, "Toma essa, lagartixa MALDJEETA!");
+                                    if (guerreiroDestrezaTotal > dragaoDestrezaTotal) {
+                                        CriarDialogo (guerreiro.Nome, "Toma essa, lagartixa MALDJEETA!");
                                         dragao.Vida = dragao.Vida - (poderAtaqueGuerreiro + 5); //5 é a força da arma.  || dragao.Vida -= (poderAtaqueGuerreiro + 5)
 
+                                        System.Console.WriteLine ($"HP Dragão: {dragao.Vida}");
+                                        System.Console.WriteLine ($"HP Guerreiro: {guerreiro.Vida}");
+                                    } else {
+                                        CriarDialogo(dragao.Nome,"Errrou troxa!");
                                         System.Console.WriteLine($"HP Dragão: {dragao.Vida}");
                                         System.Console.WriteLine($"HP Guerreiro: {guerreiro.Vida}");
                                     }
-                                    else
-                                    {
-                                        System.Console.WriteLine($"{dragao.Nome.ToUpper()}: Errrou troxa!");
-                                    }
 
-                                    Prosseguir();
+                                    Prosseguir ();
 
                                     break;
                                 case "2":
-                                    CriarDialogo(guerreiro.Nome, "Eu não sou pareo para seu poder! Estou indo embora.");
-                                    CriarDialogo(dragao.Nome, "Humana desprezível!");
+                                    CriarDialogo (guerreiro.Nome, "Eu não sou pareo para seu poder! Estou indo embora.");
+                                    CriarDialogo (dragao.Nome, "Humana desprezível!");
                                     jogadorNaoCorreu = false;
-                                    Prosseguir();
+                                    Prosseguir ();
                                     break;
 
                             }
                         }
-                        if (guerreiro.Vida <= 0)
-                        {
-                            System.Console.WriteLine("Você foi morto em batalha, o dragão venceu-lhe. :(");
+                        if (guerreiro.Vida <= 0) {
+                            System.Console.WriteLine ("Você foi morto em batalha, o dragão venceu-lhe. :(");
+                            Prosseguir();
                         }
-                        if (dragao.Vida <= 0)
-                        {
-                            System.Console.WriteLine("Parabéns, você matou o dragão e venceu a rodada!!!");
+                        if (dragao.Vida <= 0) {
+                            System.Console.WriteLine ("Parabéns, você matou o dragão e venceu a rodada!!!");
+                            Prosseguir();
                         }
-
-
 
                         break;
                     case "0":
                         jogadorNaodesistiu = false;
-                        System.Console.WriteLine("GAME OVER");
+                        System.Console.WriteLine ("GAME OVER");
                         break;
                     default:
-                        System.Console.WriteLine("Comando Inválido.");
+                        System.Console.WriteLine ("Comando Inválido.");
                         break;
                 }
             } while (jogadorNaodesistiu);
         }
 
-
-        public static void CriarDialogo(string Nome, string Frase) //Assinatura do método (parametros), ORDENADO separado por virgulas
+        public static void CriarDialogo (string Nome, string Frase) //Assinatura do método (parametros), ORDENADO separado por virgulas
         {
 
-            System.Console.WriteLine($"{Nome.ToUpper()}: {Frase}");
+            System.Console.WriteLine ($"{Nome.ToUpper()}: {Frase}");
         }
-        public static void Prosseguir()
-        {
-            System.Console.WriteLine();
-            System.Console.WriteLine("Aperte ENTER para prosseguir o diálogo.");
-            Console.ReadLine();
-            Console.Clear();
+        public static void Prosseguir () {
+            System.Console.WriteLine ();
+            System.Console.WriteLine ("Aperte ENTER para prosseguir.");
+            Console.ReadLine ();
+            Console.Clear ();
         }
-        public static Guerreiro CriarGuerreiro() //Um método que retorna uma classe Guerreiro.
+        public static Guerreiro CriarGuerreiro () //Um método que retorna uma classe Guerreiro. || Método que cria objeto
         {
-            Guerreiro guerreiro = new Guerreiro();
+            /*System.Console.WriteLine("Você deseja criar um personagem? Digite s / n .");
+            string escolhaCriarPersonagem = Console.ReadLine();
+            
+            switch(escolhaCriarPersonagem.ToLower()){
+                case "s":
+                
+                    System.Console.WriteLine("Digite o Nome do seu personagem");
+                    string nome = Console.ReadLine();
+                    System.Console.WriteLine("Digite o Sobrenome do seu personagem.");
+                    string sobrenome = Console.ReadLine();
+                    
+                break;            
+                }*/
+            //Guerreiro guerreiro = new Guerreiro("Artemis","Lire","Eryuell",DateTime.Parse("27/09/1445"),"Adaga","Arco e Flecha",1,4,3,20);
+            
+            Guerreiro guerreiro = new Guerreiro ();
             guerreiro.Nome = "Artemis";
             guerreiro.Sobrenome = "Lire";
             guerreiro.CidadeNatal = "Eryuell";
-            guerreiro.DataNascimento = DateTime.Parse("27/09/1445");
+            guerreiro.DataNascimento = DateTime.Parse ("27/09/1445");
             guerreiro.FerramentaProtecao = "Adaga";
             guerreiro.FerramentaAtaque = "Arco e Flecha";
             guerreiro.Forca = 1;
             guerreiro.Destreza = 4;
             guerreiro.Inteligencia = 3;
             guerreiro.Vida = 20;
-
             return guerreiro;
+
         }
     }
 }

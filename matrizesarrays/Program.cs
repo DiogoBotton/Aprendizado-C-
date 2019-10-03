@@ -35,11 +35,6 @@ namespace matrizesarrays
             valor = Convert.ToInt32(Console.ReadLine());
             numeros_loteria[3] = valor;
             Console.WriteLine("O novo valor é: " + numeros_loteria[3]);
-            
-
-            
-
-            
 
 
            /* 
