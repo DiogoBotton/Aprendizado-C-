@@ -54,7 +54,14 @@ namespace exerciciosMatriz
                 }
             }
 
+            // 3º
 
+            System.Console.WriteLine("Digite a altura do triângulo.");
+            int alt = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < alt; i++){
+                
+            }
 
 
             
