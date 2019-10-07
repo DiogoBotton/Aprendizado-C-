@@ -28,7 +28,7 @@ namespace exerciciosMatriz
 
             // 2°
 
-            int[] sorteio = new int[10];
+            /*int[] sorteio = new int[10];
             int cont = 0;
             
 
@@ -52,15 +52,23 @@ namespace exerciciosMatriz
                 if ((sorteio[i] % 2) == 1){
                 System.Console.Write(sorteio[i] + " ");
                 }
-            }
+            }*/
 
             // 3º
 
             System.Console.WriteLine("Digite a altura do triângulo.");
             int alt = Convert.ToInt32(Console.ReadLine());
 
+            string[] asteriscos = new string[alt];
+            string ast = "";
+
             for (int i = 0; i < alt; i++){
-                
+                ast += "*";
+                asteriscos[i] = ast;
+            }
+
+            for (int i = (alt - 1); i >= 0; i--){ // condição: i != -1 (também funciona)
+                System.Console.WriteLine(asteriscos[i]); 
             }
 
 

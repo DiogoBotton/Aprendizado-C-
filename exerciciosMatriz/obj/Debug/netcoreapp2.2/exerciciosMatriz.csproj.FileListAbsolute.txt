@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerc
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosMatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosMatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosMatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\bin\Debug\netcoreapp2.2\exerciciosMatriz.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosmatriz\obj\Debug\netcoreapp2.2\exerciciosMatriz.pdb
