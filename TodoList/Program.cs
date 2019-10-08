@@ -11,7 +11,6 @@ namespace TodoList {
 
             try {
                 string[] todoFile = File.ReadAllLines (FilePath); //Passando o caminho do arquivo que irá ser lido nos paramêtros de ReadAllLines.
-
                 foreach (string line in todoFile) {
                     string[] itens = line.Split (","); //Quando lê uma virgula, separa a linha.
                     string titulo = itens[0].Replace ("\"", ""); //O que você quer substituir, por o que você quer substituir. Se achar aspas duplas, vai substituí-la pela instrução após virgula.
@@ -48,11 +47,21 @@ namespace TodoList {
                         break;
                     case 3:
                         System.Console.WriteLine ("Finalizando programa");
-                        //TODO Encontrar método para salvar o arquivo após o programa ser finalizado.         
+                        //TODO Encontrar método para salvar o arquivo após o programa ser finalizado.
+                        try {
+                            StreamWriter writer = new StreamWriter ("todo.csv");
+                            //string[] todo;
+                            foreach (TodoItem item in todoList) {
+                                string todo = "\"" + item.Titulo + "\"" + "," + "\"" + item.Nota + "\"";
+                                
+                                writer.WriteLine (todo);
+                            }
+                            writer.Close();
+                        } catch (IOException erro) {
+                            System.Console.WriteLine ("Erro ao acessar arquivo.");
+                            System.Console.WriteLine (erro.Message);
+                        }
                         /*
-                        StreamWriter writer = new StreamWriter("todo.csv");
-                        writer.Write(titulo, nota);
-
                         File.WriteAllLines(FilePath, todoList.ToString()); //*falho*
                         try catch, foreach.
                         */
