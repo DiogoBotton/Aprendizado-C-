@@ -32,12 +32,15 @@ namespace Senaizinho {
                         alunosCadastrados += 1;
                         break;
                     case "2":
-                        salasCadastradas = CadastrarSala (salas, salasCadastradas);
+                        CadastrarSala (ref salas, salasCadastradas);
+                        salasCadastradas += 1;
                         break;
                     case "3":
                         AlocarAluno (alunos, salas); //enviando informações por parametro.
                         break;
                     case "4":
+
+                        RemoverAluno (salas);
                         break;
                     case "5":
                         VerificarSalas (salas);
@@ -55,7 +58,7 @@ namespace Senaizinho {
 
             } while (querSair);
 
-        }
+        } //PROBLEMAS com cadastro de aluno e sala //*(pode-se cadastrar o mesmo nome de aluno) e (pode-se cadastrar o mesmo número de sala, sobrescrevendo assim outras salas criadas com mesmo número.) resolvido
         public static void CadastrarAluno (Aluno[] alunos, int alunosCadastrados) {
             int limiteAlunos = 100;
 
@@ -72,23 +75,34 @@ namespace Senaizinho {
 
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de um novo ALUNO, a escola atingiu sua capacidade máxima.");
+                Console.ReadLine ();
             }
         }
-        public static int CadastrarSala (Sala[] salas, int salasCadastradas) {
+        public static Sala CadastrarSala (ref Sala[] salas, int salasCadastradas) {
             int limiteSalas = 10;
             int capacidade = 0;
             int numSala = 0;
-
+            bool salaJaExiste = false;
             Console.Clear ();
             if (salasCadastradas < limiteSalas) {
-                System.Console.Write ("Entre com o número da sala à ser aberta: ");
                 do {
-                    numSala = Convert.ToInt32 (Console.ReadLine ());
+                    System.Console.Write ("Entre com o número da sala à ser aberta: ");
+                    do {
+                        numSala = Convert.ToInt32 (Console.ReadLine ());
+                        if (numSala < 1 || numSala > 10) {
+                            System.Console.WriteLine ("Digite um número de 1 a 10.");
+                        }
+                    } while (numSala < 1 || numSala > 10);
+                    if (salas[numSala - 1] == null) {
+                        salasCadastradas += 1;
+                        salaJaExiste = false;
 
-                    if (numSala < 1 || numSala > 10) {
-                        System.Console.WriteLine ("Digite um número de 1 a 10.");
+                    } else {
+                        System.Console.WriteLine ("Esta sala já existe.");
+                        salaJaExiste = true;
+                        Console.ReadLine ();
                     }
-                } while (numSala < 1 || numSala > 10);
+                } while (salaJaExiste);
 
                 System.Console.Write ("Entre com a capacidade máxima da sala: ");
                 do {
@@ -99,16 +113,14 @@ namespace Senaizinho {
                     }
                 } while (capacidade < 0 || capacidade > 10);
 
-                Sala sala = new Sala (numSala, capacidade);
-
-                salasCadastradas += 1;
-
-                salas[salasCadastradas - 1] = sala;
-
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de uma nova SALA, a escola atingiu sua capacidade máxima.");
+                Console.ReadLine ();
             }
-            return salasCadastradas;
+            Sala sala = new Sala (numSala, capacidade);
+            salas[numSala - 1] = sala;
+
+            return sala;
         }
         public static void AlocarAluno (Aluno[] alunos, Sala[] salas) { //Chamando informações por parametro.
             Console.Clear ();
@@ -121,7 +133,7 @@ namespace Senaizinho {
 
             int count = 0;
             int index = 0;
-            foreach (Aluno item in alunos) {
+            foreach (Aluno item in alunos) { //Para strings não é preciso utilizar item != null.
                 if (item != null) { //null pois cai o programa quando procura-se algo em lugar vazio.
                     if (item.Nome == nomeAluno) {
                         alunoExiste = true;
@@ -145,16 +157,20 @@ namespace Senaizinho {
             }
 
             if (salaExiste && alunoExiste) {
+                string msg = "";
                 for (int i = 0; i < salas.Length; i++) {
                     if (salas[i] != null) {
                         if (i == (numSala - 1)) {
                             //salas[i].Alunos[i] = nomeAluno;
-                            alunos[index].numeroSala = numSala;
-                            salas[i].AlocarAluno (nomeAluno);
+                            alunos[index].numeroSala = numSala; //* ERRO: mesmo com a sala cheia, da o número da sala para a classe aluno.
+                            msg = salas[i].AlocarAluno (nomeAluno);
                             break;
                         }
                     }
                 }
+                System.Console.WriteLine (msg);
+                Console.ReadLine ();
+
             } else {
                 System.Console.WriteLine ("Nome ou número de sala não existem, tente novamente.");
                 Console.ReadLine ();
@@ -162,17 +178,43 @@ namespace Senaizinho {
 
         }
 
+        public static void RemoverAluno (Sala[] salas) {
+            string nome = "";
+            string msg = "";
+
+            System.Console.Write ("Digite o nome do aluno que será removido: ");
+            nome = Console.ReadLine ();
+
+            foreach (Sala item in salas) {
+                if (item != null) {
+                    msg = item.RemoverAluno (nome);
+                }
+            }
+            System.Console.WriteLine (msg);
+            Console.ReadLine ();
+
+        }
+
         public static void VerificarSalas (Sala[] salas) {
             //TODO verificar salas, verificar alunos, remover alunos
             //Array estourando. Como dizer a qtd de alunos[] no vetor de salas.
-            for (int i = 0; i < salas.Length; i++) {
+            int count = 0;
+            foreach (Sala item in salas) {
+                System.Console.WriteLine ($"Sala {count +1}:");
+                if (item != null) {
+                    
+                }
+                count++;
+            }
+
+            /*for (int i = 0; i < salas.Length; i++) {
                 if (salas[i] != null) {
                     System.Console.WriteLine ($"Sala {i + 1}: {salas.Length} alunos registrados na sala.");
                     for (int j = 0; i < salas.Length; j++) {
                         System.Console.WriteLine ($"Aluno{j + 1}: {salas[i].Alunos[j]} ");
                     }
                 }
-            }
+            }*/
         }
     }
 }

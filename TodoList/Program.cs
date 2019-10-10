@@ -62,7 +62,8 @@ namespace TodoList {
                             System.Console.WriteLine (erro.Message);
                         }
                         /*
-                        File.WriteAllLines(FilePath, todoList.ToString()); //*falho*
+                        File.WriteAllLines(FilePath, todoList.ToString()); //* Precisa de uma lista de STRINGS (List<string> lista)
+                        Criar uma lista de strings
                         try catch, foreach.
                         */
                         //TODO 
