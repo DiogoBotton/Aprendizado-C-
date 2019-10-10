@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\Senai
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\Senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\Senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\Senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\bin\Debug\netcoreapp2.2\Senaizinho.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\senaizinho\obj\Debug\netcoreapp2.2\Senaizinho.pdb

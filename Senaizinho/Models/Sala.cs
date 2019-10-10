@@ -12,13 +12,25 @@ namespace Senaizinho.Models
             this.capacidadeTotal = capacidadeTotal; 
             //this.CapacidadeAtual = capacidadeTotal - Alunos.Length; 
         }
-        public AlocarAluno(string nome){
+        public void AlocarAluno(string nome){
+            int index = 0;
+            
             if(Alunos.Length < capacidadeTotal){
-                //this.Alunos[] = nome;
-
+                foreach (string nomes in Alunos)
+                {
+                    if (nomes == null){
+                        this.Alunos[index] = nome;
+                    }
+                    index++;
+                }
+                System.Console.WriteLine("O aluno foi cadastrado com sucesso nesta sala.");
+                System.Console.ReadLine();
+                
             }
             else{
                 System.Console.WriteLine("Esta sala esta cheia.");
+                System.Console.ReadLine();
+                
             }
         }
         /*
