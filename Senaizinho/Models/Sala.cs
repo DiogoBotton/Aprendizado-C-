@@ -9,7 +9,7 @@ namespace Senaizinho.Models {
             this.numeroSala = numeroSala;
             this.capacidadeTotal = capacidadeTotal;
             this.Alunos = new string[capacidadeTotal];
-            this.CapacidadeAtual = 0;
+            //this.CapacidadeAtual = 0;
             //this.CapacidadeAtual = capacidadeTotal - Alunos.Length; 
         }
         public string AlocarAluno (string nome) {
@@ -34,31 +34,34 @@ namespace Senaizinho.Models {
             }
         }
 
-        public string RemoverAluno(string nome) {
+        public string RemoverAluno (string nome) {
             int index = 0;
             string msg = "";
-
+            
             foreach (string item in this.Alunos) {
                 //TODO SALA VAZIA
+                
                     if (item == nome) {
-                        this.Alunos[index] = null;
+                        this.Alunos[index] = "";
                         msg = "O aluno foi removido da sala com sucesso.";
-                    }
-                    else {
+                    } else {
                         msg = "Este aluno não existe nesta sala.";
                     }
-                
                 index++;
             }
             return msg;
         }
-        public string MostrarAluno() {
+        public string MostrarAluno () {
             string listaAlunos = "";
-            foreach (string aluno in Alunos)
-            {
-                if (aluno != null){
-                    listaAlunos += aluno + " ";
+            foreach (string aluno in Alunos) {
+                if (aluno != null) {
+                    listaAlunos += aluno + "   ";
+
                 }
+                /*else{
+                    System.Console.Write(" Sala vazia.");
+                    break;
+                }*/
             }
             return listaAlunos;
         }

@@ -162,7 +162,7 @@ namespace Senaizinho {
                     if (salas[i] != null) {
                         if (i == (numSala - 1)) {
                             //salas[i].Alunos[i] = nomeAluno;
-                            alunos[index].numeroSala = numSala; //* ERRO: mesmo com a sala cheia, da o número da sala para a classe aluno.
+                            //alunos[index].numeroSala = numSala; //* ERRO: mesmo com a sala cheia, da o número da sala para a classe aluno.
                             msg = salas[i].AlocarAluno (nomeAluno);
                             break;
                         }
@@ -198,14 +198,20 @@ namespace Senaizinho {
         public static void VerificarSalas (Sala[] salas) {
             //TODO verificar salas, verificar alunos, remover alunos
             //Array estourando. Como dizer a qtd de alunos[] no vetor de salas.
+            string alunos = "";
             int count = 0;
             foreach (Sala item in salas) {
-                System.Console.WriteLine ($"Sala {count +1}:");
                 if (item != null) {
-                    
+                    System.Console.WriteLine ($"Sala {item.numeroSala}:");
+                    alunos = item.MostrarAluno();
+                    System.Console.WriteLine($"  Alunos: {alunos}");
+                    System.Console.WriteLine($"  Qtd. de Alunos: {count}.");
+                    count++;
                 }
-                count++;
+
+                
             }
+                Console.ReadLine();
 
             /*for (int i = 0; i < salas.Length; i++) {
                 if (salas[i] != null) {
