@@ -3,30 +3,33 @@ namespace ByteBank {
         public Cliente Titular { get; set; }
         public int Agencia { get; set; }
         public int Conta { get; set; }
-        public double Saldo { get; set; }
+        private double _Saldo;
+
+        public double Saldo{
+            get {return _Saldo;} //_Saldo apenas leitura (get)
+        }
 
         public ContaCorrente (int Agencia, int Conta, Cliente Titular) {
             this.Agencia = Agencia;
             this.Conta = Conta;
             this.Titular = Titular;
-            this.Saldo = 0;
         }
 
-        public double Deposito (double deposito) {
-            if (deposito < 0) {
+        public bool Deposito (double deposito) {
+            if (deposito >= 0) {
+                this._Saldo += deposito;
+                return true;
+            } else {
                 System.Console.ForegroundColor = System.ConsoleColor.Red;
                 System.Console.WriteLine ("Você não pode depositar um valor negativo.");
                 System.Console.ResetColor ();
-                return this.Saldo;
-            } else {
-                this.Saldo += deposito;
-                return this.Saldo;
+                return false;
             }
         }
         public bool Saque (double saque) {
             if (saque <= Saldo && saque > 0) //Não poderá sacar numeros negativos
             {
-                this.Saldo -= saque;
+                this._Saldo -= saque;
                 return true;
             } else {
                 System.Console.ForegroundColor = System.ConsoleColor.Red;

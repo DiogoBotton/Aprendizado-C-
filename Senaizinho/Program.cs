@@ -32,7 +32,7 @@ namespace Senaizinho {
                         alunosCadastrados += 1;
                         break;
                     case "2":
-                        CadastrarSala (ref salas, salasCadastradas);
+                        CadastrarSala (salas, salasCadastradas);
                         salasCadastradas += 1;
                         break;
                     case "3":
@@ -40,12 +40,13 @@ namespace Senaizinho {
                         break;
                     case "4":
 
-                        RemoverAluno (salas);
+                        RemoverAluno (salas, alunos);
                         break;
                     case "5":
                         VerificarSalas (salas);
                         break;
                     case "6":
+                        VerificarAlunos (alunos);
                         break;
                     case "0":
                         System.Console.WriteLine ("Finalizando programa.");
@@ -64,8 +65,22 @@ namespace Senaizinho {
 
             Console.Clear ();
             if (alunosCadastrados < limiteAlunos) {
-                System.Console.Write ("Digite o nome do aluno: ");
-                string nome = Console.ReadLine ();
+                string nome = "";
+                bool alunoJaExiste = false;
+                do {
+                    System.Console.Write ("Digite o nome do aluno: ");
+                    nome = Console.ReadLine ();
+                    foreach (Aluno item in alunos) {
+                        if (item != null) {
+                            if (item.Nome == nome) {
+                                System.Console.WriteLine ("Este nome já esta em uso.");
+                                alunoJaExiste = true;
+                            } else {
+                                alunoJaExiste = false;
+                            }
+                        }
+                    }
+                } while (alunoJaExiste);
                 System.Console.WriteLine ("Digite a data de nascimento do aluno: (xx/xx/xxxx)");
                 DateTime data = DateTime.Parse (Console.ReadLine ());
 
@@ -78,7 +93,7 @@ namespace Senaizinho {
                 Console.ReadLine ();
             }
         }
-        public static Sala CadastrarSala (ref Sala[] salas, int salasCadastradas) {
+        public static Sala CadastrarSala (Sala[] salas, int salasCadastradas) {
             int limiteSalas = 10;
             int capacidade = 0;
             int numSala = 0;
@@ -124,24 +139,23 @@ namespace Senaizinho {
         }
         public static void AlocarAluno (Aluno[] alunos, Sala[] salas) { //Chamando informações por parametro.
             Console.Clear ();
-            //item.numeroSala == numeroSala
+            //item.numeroSala == numeroSala 
             bool alunoExiste = false;
             bool salaExiste = false;
 
             System.Console.Write ("Digite o nome do aluno: ");
             string nomeAluno = Console.ReadLine ();
 
-            int count = 0;
             int index = 0;
             foreach (Aluno item in alunos) { //Para strings não é preciso utilizar item != null.
                 if (item != null) { //null pois cai o programa quando procura-se algo em lugar vazio.
                     if (item.Nome == nomeAluno) {
                         alunoExiste = true;
-                        index = count;
+
                         break;
                     }
                 }
-                count++;
+                index++;
             }
 
             System.Console.WriteLine ("Digite o número da sala que o aluno será alocado: ");
@@ -161,9 +175,11 @@ namespace Senaizinho {
                 for (int i = 0; i < salas.Length; i++) {
                     if (salas[i] != null) {
                         if (i == (numSala - 1)) {
-                            //salas[i].Alunos[i] = nomeAluno;
-                            //alunos[index].numeroSala = numSala; //* ERRO: mesmo com a sala cheia, da o número da sala para a classe aluno.
                             msg = salas[i].AlocarAluno (nomeAluno);
+                            //Adiciona na classe aluno, o número da sala em que foi alocado.
+                            if (msg == "O aluno foi cadastrado com sucesso nesta sala.") {
+                                alunos[index].numeroSala = numSala;
+                            }
                             break;
                         }
                     }
@@ -178,7 +194,7 @@ namespace Senaizinho {
 
         }
 
-        public static void RemoverAluno (Sala[] salas) {
+        public static void RemoverAluno (Sala[] salas, Aluno[] alunos) {
             string nome = "";
             string msg = "";
 
@@ -188,39 +204,38 @@ namespace Senaizinho {
             foreach (Sala item in salas) {
                 if (item != null) {
                     msg = item.RemoverAluno (nome);
+                    break;
+                }
+            }
+            //Remove da classe aluno, o número da sala em que estava alocado.
+            foreach (Aluno item in alunos) {
+                if (item != null) {
+                    if (item.Nome == nome) {
+                        item.numeroSala = 0;
+                    }
                 }
             }
             System.Console.WriteLine (msg);
             Console.ReadLine ();
-
         }
 
         public static void VerificarSalas (Sala[] salas) {
-            //TODO verificar salas, verificar alunos, remover alunos
-            //Array estourando. Como dizer a qtd de alunos[] no vetor de salas.
             string alunos = "";
-            int count = 0;
+
             foreach (Sala item in salas) {
                 if (item != null) {
                     System.Console.WriteLine ($"Sala {item.numeroSala}:");
-                    alunos = item.MostrarAluno();
-                    System.Console.WriteLine($"  Alunos: {alunos}");
-                    System.Console.WriteLine($"  Qtd. de Alunos: {count}.");
-                    count++;
+                    alunos = item.MostrarAluno ();
+                    System.Console.WriteLine ($"  Alunos: {alunos}");
+                    //TODO qtd de alunos da sala
+                    //Contar espaços em branco de cada nome com Split e separa-los numa array de strings, usar Lenght para determinar qts alunos na sala.
                 }
-
-                
             }
-                Console.ReadLine();
-
-            /*for (int i = 0; i < salas.Length; i++) {
-                if (salas[i] != null) {
-                    System.Console.WriteLine ($"Sala {i + 1}: {salas.Length} alunos registrados na sala.");
-                    for (int j = 0; i < salas.Length; j++) {
-                        System.Console.WriteLine ($"Aluno{j + 1}: {salas[i].Alunos[j]} ");
-                    }
-                }
-            }*/
+            Console.ReadLine ();
+        }
+        public static void VerificarAlunos (Aluno[] salas) {
+            //TODO Verificar se o número da sala (da classe aluno) bate com o n° da sala em que esta alocado.
+            //TODO ARRUMAR: É possível cadastrar o mesmo aluno em várias salas
         }
     }
 }

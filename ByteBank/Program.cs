@@ -13,9 +13,9 @@ namespace ByteBank {
             string cpf = Console.ReadLine ();
             Console.WriteLine ("Digite seu Email");
             string email = Console.ReadLine ();
-
+            
             Cliente cliente1 = new Cliente (nome, cpf, email);
-
+            
             string senha = "";
             string validacaoSenha = "";
 
@@ -55,13 +55,17 @@ namespace ByteBank {
 
             ContaCorrente conta1 = new ContaCorrente (agencia, conta, cliente1); //Titular recebe a classe CLIENTE.
 
+            bool depositou = false;
             do {
                 Console.WriteLine ("Inicie o saldo da conta do cliente:");
-                conta1.Saldo = Convert.ToDouble (Console.ReadLine ());
-                if (conta1.Saldo < 0) {
+                double valor = Convert.ToDouble (Console.ReadLine ());
+                
+                depositou = conta1.Deposito(valor);
+
+                if (!depositou) {
                     System.Console.WriteLine ("Você não pode iniciar a conta com saldo negativo.");
                 }
-            } while (conta1.Saldo < 0);
+            } while (!depositou);
 
             System.Console.WriteLine ($"O saldo atual da conta é: R$ {conta1.Saldo}. ");
             #endregion
