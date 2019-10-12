@@ -40,8 +40,7 @@ namespace Senaizinho.Models {
             //TODO SALA VAZIA
             if (this.CapacidadeAtual == this.capacidadeTotal) {
                 msg = "A sala esta vazia.";
-            } 
-            else {
+            } else {
 
                 foreach (string item in this.Alunos) {
                     if (item == nome) {
