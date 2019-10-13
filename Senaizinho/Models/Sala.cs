@@ -18,14 +18,14 @@ namespace Senaizinho.Models {
             if (this.CapacidadeAtual > 0) {
                 foreach (string item in Alunos) {
                     if (item == null) {
-                        this.Alunos[index] = nome;
+                        this.Alunos[index] = nome + "   ";
                         this.CapacidadeAtual--;
 
+                        msg = "O aluno foi cadastrado com sucesso nesta sala.";
                         break;
                     }
                     index++;
                 }
-                msg = "O aluno foi cadastrado com sucesso nesta sala.";
                 return msg;
             } else {
                 msg = "Esta sala esta cheia, não foi possível alocar o aluno nesta sala.";
@@ -36,6 +36,8 @@ namespace Senaizinho.Models {
         public string RemoverAluno (string nome) {
             int index = 0;
             string msg = "Este aluno não existe em nenhuma sala.";
+
+            nome = nome + "   ";
 
             //TODO SALA VAZIA
             if (this.CapacidadeAtual == this.capacidadeTotal) {
@@ -56,14 +58,14 @@ namespace Senaizinho.Models {
         }
         public string MostrarAluno () {
             string listaAlunos = "";
-            int numAlunos = this.capacidadeTotal - this.CapacidadeAtual;
 
-            System.Console.WriteLine ($"  Qtd de alunos: {numAlunos}");
+            //int numAlunos = this.capacidadeTotal - this.CapacidadeAtual;
+            //System.Console.WriteLine ($"  Qtd de alunos: {numAlunos}");
 
             if (this.CapacidadeAtual != this.capacidadeTotal) {
                 foreach (string aluno in Alunos) {
                     if (aluno != null) {
-                        listaAlunos += aluno + "   ";
+                        listaAlunos += aluno;
                     }
                 }
                 return listaAlunos;

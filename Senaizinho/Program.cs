@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.IO;
 using Senaizinho.Models;
 namespace Senaizinho {
@@ -17,8 +17,13 @@ namespace Senaizinho {
             string fileName = "ListaAlunosSalas.csv";
             string FilePath = ".\\" + fileName;
 
+            string fileName2 = "ListaSalas.csv";
+            string FilePath2 = ".\\" + fileName2;
+
             //AlunosMatriculados = InitList (FilePath, alunos);
-            //TODO PROBLEMA RESOLVIDO: Se o aluno não for alocado, erro de execução, pois numSala recebe string convertida para int, tenta ler string e não funciona.
+            //PROBLEMA RESOLVIDO: Se o aluno não for alocado, erro de execução, pois numSala recebe string convertida para int, tenta ler string e não funciona.
+
+            //Lista de Alunos:
             try {
                 string[] lista = File.ReadAllLines (@FilePath);
                 int count = 0;
@@ -31,7 +36,48 @@ namespace Senaizinho {
                     alunos[count] = new Aluno (nome, data);
                     alunos[count].AlunoNumSala (numSala);
                     //alunosMatriculados.Add(alunos[count]);
+
                     count++;
+                    alunosCadastrados++;
+                }
+            } catch (IOException erro) {
+                System.Console.WriteLine ("Erro ao acessar arquivo.");
+                System.Console.WriteLine (erro.Message);
+            }
+
+            //Lista de Salas:
+            try {
+                string[] lista = File.ReadAllLines (@FilePath2);
+                int count = 0;
+                foreach (string linha in lista) {
+                    string[] itens = linha.Split (",");
+                    int numSala = Convert.ToInt32 (itens[0].Replace ("\"", ""));
+                    int capacidade = Convert.ToInt32 (itens[1].Replace ("\"", ""));
+
+                    salas[count] = new Sala (numSala, capacidade);
+
+                    string listaAlunosConcat = itens[2].Replace ("\"", "");
+                    //PROBLEMA RESOLVIDO: alunosCount incrementava a cada item da listaAlunos, fazendo com que o próximo aluno da sala fosse alocado na sala seguinte consecutivamente.
+                    if (listaAlunosConcat != "Sala vazia.") {
+                        string[] listaAlunos = listaAlunosConcat.Split ("   ");
+                        //int alunosCount = 0;
+                        foreach (string item in listaAlunos) {
+                            if(item != "") {
+                                item.Replace ("   ","");
+                                if (salas[count] != null) {
+                                    salas[count].AlocarAluno (item);
+                                    //sala[alunosCount].AlocarAluno(item);
+                                }
+                            }
+                            //alunosCount++;
+                        }
+
+                    }
+
+                    int qtdAlunos = Convert.ToInt32 (itens[3].Replace ("\"", ""));
+
+                    count++;
+                    salasCadastradas++;
                 }
             } catch (IOException erro) {
                 System.Console.WriteLine ("Erro ao acessar arquivo.");
@@ -57,8 +103,7 @@ namespace Senaizinho {
                         alunosCadastrados += 1;
                         break;
                     case "2":
-                        CadastrarSala (salas, salasCadastradas);
-                        salasCadastradas += 1;
+                        salasCadastradas = CadastrarSala (salas, salasCadastradas);
                         break;
                     case "3":
                         AlocarAluno (alunos, salas); //enviando informações por parametro.
@@ -85,7 +130,9 @@ namespace Senaizinho {
 
             } while (querSair);
 
-        } //PROBLEMAS com cadastro de aluno e sala //*(pode-se cadastrar o mesmo nome de aluno) e (pode-se cadastrar o mesmo número de sala, sobrescrevendo assim outras salas criadas com mesmo número.) resolvido
+        } //PROBLEMAS com cadastro de aluno e sala 
+        //* RESOLVIDO: (pode-se cadastrar o mesmo número de sala, sobrescrevendo assim outras salas criadas com mesmo número).
+        //* RESOLVIDO: (pode-se cadastrar o mesmo nome de aluno)
         public static void CadastrarAluno (Aluno[] alunos, int alunosCadastrados) {
             int limiteAlunos = 100;
 
@@ -102,7 +149,9 @@ namespace Senaizinho {
                                 alunoJaExiste = false;
                             } else {
                                 System.Console.WriteLine ("Este nome já esta em uso.");
+                                Console.ReadLine();
                                 alunoJaExiste = true;
+                                break;
                             }
                         }
                     }
@@ -125,19 +174,21 @@ namespace Senaizinho {
                 Console.ReadLine ();
             }
         }
-        public static Sala CadastrarSala (Sala[] salas, int salasCadastradas) {
+        public static int CadastrarSala (Sala[] salas, int salasCadastradas) {
             int limiteSalas = 10;
             int capacidade = 0;
             int numSala = 0;
             bool salaJaExiste = false;
             Console.Clear ();
+
             if (salasCadastradas < limiteSalas) {
                 do {
-                    System.Console.Write ("Entre com o número da sala à ser aberta: ");
                     do {
+                        System.Console.Write ("Entre com o número da sala à ser aberta: ");
                         numSala = Convert.ToInt32 (Console.ReadLine ());
                         if (numSala < 1 || numSala > 10) {
                             System.Console.WriteLine ("Digite um número de 1 a 10.");
+                            Console.ReadLine ();
                         }
                     } while (numSala < 1 || numSala > 10);
                     if (salas[numSala - 1] == null) {
@@ -160,16 +211,17 @@ namespace Senaizinho {
                     }
                 } while (capacidade < 0 || capacidade > 10);
 
+                Sala sala = new Sala (numSala, capacidade);
+                salas[numSala - 1] = sala;
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de uma nova SALA, a escola atingiu sua capacidade máxima.");
                 Console.ReadLine ();
             }
-            Sala sala = new Sala (numSala, capacidade);
-            salas[numSala - 1] = sala;
 
-            return sala;
+            return salasCadastradas;
         }
         public static void AlocarAluno (Aluno[] alunos, Sala[] salas) { //Chamando informações por parametro.
+        //TODO ARRUMAR: É possível cadastrar o mesmo aluno em várias salas, como também na mesma sala.
             Console.Clear ();
             //item.numeroSala == numeroSala 
             bool alunoExiste = false;
@@ -256,25 +308,23 @@ namespace Senaizinho {
                     System.Console.WriteLine ($"Sala {item.numeroSala}:");
                     string alunos = item.MostrarAluno ();
                     System.Console.WriteLine ($"  Alunos: {alunos}");
-                    //TODO qtd de alunos da sala
+
                     //Contar espaços em branco de cada nome com Split e separa-los numa array de strings, usar Lenght para determinar qts alunos na sala.
-                    //PROBLEMA: QUANDO REMOVE, A QTD DE ALUNOS CONTINUA O MESMO, NÃO DIMINUI.//* O ESPAÇO NÃO É REMOVIDO.
-                    
-                    /*if (alunos != "Sala vazia.") {
+                    //PROBLEMA RESOLVIDO: QUANDO REMOVE, A QTD DE ALUNOS CONTINUA O MESMO, NÃO DIMINUI.//* O ESPAÇO NÃO É REMOVIDO.
+
+                    if (alunos != "Sala vazia.") {
                         string[] itens = alunos.Split ("   ");
-                        System.Console.WriteLine ($"  Qtd de alunos: {itens.Length -1}");//Perguntar o por quê do -1
-                    }
-                    else{
+                        System.Console.WriteLine ($"  Qtd de alunos: {itens.Length -1}"); //Perguntar o por quê do -1||Pois sempre irá contar o espaço do último nome.
+                    } else {
                         System.Console.WriteLine ($"  Qtd de alunos: 0");
-                    }*/
+                    }
 
                 }
             }
             Console.ReadLine ();
         }
         public static void VerificarAlunos (Aluno[] alunos) {
-            //TODO RESOLVIDO: Verificar se o número da sala (da classe aluno) bate com o n° da sala em que esta alocado. CERTO!
-            //TODO ARRUMAR: É possível cadastrar o mesmo aluno em várias salas
+            // RESOLVIDO: Verificar se o número da sala (da classe aluno) bate com o n° da sala em que esta alocado. CERTO!
             string[] listaAlunos = new string[100];
             int count = 0;
             foreach (Aluno item in alunos) {
@@ -301,7 +351,6 @@ namespace Senaizinho {
             try {
                 StreamWriter writer = new StreamWriter ("ListaAlunosSalas.csv");
 
-                //string listaSalas = "";
                 int count = 0;
                 foreach (Aluno item in alunos) {
                     if (item != null) {
@@ -319,18 +368,38 @@ namespace Senaizinho {
                 System.Console.WriteLine ("Erro ao acessar arquivo.");
                 System.Console.WriteLine (erro.Message);
             }
-            /*
-            count = 0;
-            writer = new StreamWriter("ListaSalas.csv");
-            foreach (Sala item in salas)
-             {
-                 if(item != null){
-                     listaSalas += "\"" + (count + 1) + "\"" + "," + "\"" + item.MostrarAluno() + "\"" ;
-                     writer.WriteLine(listaSalas); 
-                 }
-                 count++;
-             }
-             */
+
+            try {
+                StreamWriter writer = new StreamWriter ("ListaSalas.csv");
+
+                int count = 0;
+                foreach (Sala item in salas) {
+                    int qtdAlunos = 0;
+
+                    if (item != null) {
+                        string listaAlunos = item.MostrarAluno ();
+                        foreach (Aluno item2 in alunos) {
+                            if (item2 != null) {
+                                if (listaAlunos != "Sala vazia.") {
+                                    string[] itens = listaAlunos.Split ("   ");
+                                    qtdAlunos = itens.Length - 1;
+                                } else {
+                                    qtdAlunos = 0;
+                                }
+                            }
+                        }
+                        string listaSalas = "\"" + (count + 1) + "\"" + "," + "\"" + item.capacidadeTotal + "\"" + "," + "\"" + listaAlunos + "\"" + "," + "\"" + qtdAlunos + "\"";
+
+                        writer.WriteLine (listaSalas);
+                    }
+                    count++;
+                }
+                writer.Close ();
+            } catch (IOException erro) {
+                System.Console.WriteLine ("Erro ao acessar arquivo.");
+                System.Console.WriteLine (erro.Message);
+            }
+
         }
     }
 }
