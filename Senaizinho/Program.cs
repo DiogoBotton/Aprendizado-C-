@@ -7,6 +7,7 @@ namespace Senaizinho {
         static void Main (string[] args) {
             Aluno[] alunos = new Aluno[100];
             Sala[] salas = new Sala[10];
+
             int alunosCadastrados = 0;
             int salasCadastradas = 0;
             bool querSair = true;
@@ -15,8 +16,27 @@ namespace Senaizinho {
             //List<Sala> salasExistentes = new List<Sala>();
             string fileName = "ListaAlunosSalas.csv";
             string FilePath = ".\\" + fileName;
-            
-            InitList(FilePath, alunos);
+
+            //AlunosMatriculados = InitList (FilePath, alunos);
+            //TODO PROBLEMA RESOLVIDO: Se o aluno não for alocado, erro de execução, pois numSala recebe string convertida para int, tenta ler string e não funciona.
+            try {
+                string[] lista = File.ReadAllLines (@FilePath);
+                int count = 0;
+                foreach (string linha in lista) {
+                    string[] itens = linha.Split (",");
+                    string nome = itens[0].Replace ("\"", "");
+                    int numSala = Convert.ToInt32 (itens[1].Replace ("\"", ""));
+                    DateTime data = DateTime.Parse (itens[2].Replace ("\"", ""));
+
+                    alunos[count] = new Aluno (nome, data);
+                    alunos[count].AlunoNumSala (numSala);
+                    //alunosMatriculados.Add(alunos[count]);
+                    count++;
+                }
+            } catch (IOException erro) {
+                System.Console.WriteLine ("Erro ao acessar arquivo.");
+                System.Console.WriteLine (erro.Message);
+            }
 
             do {
                 Console.Clear ();
@@ -78,11 +98,11 @@ namespace Senaizinho {
                     nome = Console.ReadLine ();
                     foreach (Aluno item in alunos) {
                         if (item != null) {
-                            if (item.Nome == nome) {
+                            if (item.Nome != nome) {
+                                alunoJaExiste = false;
+                            } else {
                                 System.Console.WriteLine ("Este nome já esta em uso.");
                                 alunoJaExiste = true;
-                            } else {
-                                alunoJaExiste = false;
                             }
                         }
                     }
@@ -91,8 +111,14 @@ namespace Senaizinho {
                 DateTime data = DateTime.Parse (Console.ReadLine ());
 
                 Aluno aluno = new Aluno (nome, data);
-
-                alunos[alunosCadastrados] = aluno;
+                int count = 0;
+                foreach (Aluno item in alunos) {
+                    if (item == null) {
+                        alunos[count] = aluno;
+                        break;
+                    }
+                    count++;
+                }
 
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de um novo ALUNO, a escola atingiu sua capacidade máxima.");
@@ -157,7 +183,6 @@ namespace Senaizinho {
                 if (item != null) { //null pois cai o programa quando procura-se algo em lugar vazio.
                     if (item.Nome == nomeAluno) {
                         alunoExiste = true;
-
                         break;
                     }
                 }
@@ -226,21 +251,29 @@ namespace Senaizinho {
         }
 
         public static void VerificarSalas (Sala[] salas) {
-            string alunos = "";
-
             foreach (Sala item in salas) {
                 if (item != null) {
                     System.Console.WriteLine ($"Sala {item.numeroSala}:");
-                    alunos = item.MostrarAluno ();
+                    string alunos = item.MostrarAluno ();
                     System.Console.WriteLine ($"  Alunos: {alunos}");
                     //TODO qtd de alunos da sala
                     //Contar espaços em branco de cada nome com Split e separa-los numa array de strings, usar Lenght para determinar qts alunos na sala.
+                    //PROBLEMA: QUANDO REMOVE, A QTD DE ALUNOS CONTINUA O MESMO, NÃO DIMINUI.//* O ESPAÇO NÃO É REMOVIDO.
+                    
+                    /*if (alunos != "Sala vazia.") {
+                        string[] itens = alunos.Split ("   ");
+                        System.Console.WriteLine ($"  Qtd de alunos: {itens.Length -1}");//Perguntar o por quê do -1
+                    }
+                    else{
+                        System.Console.WriteLine ($"  Qtd de alunos: 0");
+                    }*/
+
                 }
             }
             Console.ReadLine ();
         }
         public static void VerificarAlunos (Aluno[] alunos) {
-            //TODO Verificar se o número da sala (da classe aluno) bate com o n° da sala em que esta alocado. CERTO!
+            //TODO RESOLVIDO: Verificar se o número da sala (da classe aluno) bate com o n° da sala em que esta alocado. CERTO!
             //TODO ARRUMAR: É possível cadastrar o mesmo aluno em várias salas
             string[] listaAlunos = new string[100];
             int count = 0;
@@ -265,26 +298,26 @@ namespace Senaizinho {
         }
         public static void Salvar (Aluno[] alunos, Sala[] salas) {
             //* PROBLEMA: ESCREVE NO ARQUIVO MAS NÃO LÊ E NÃO MANTEM O CONTEÚDO ANTERIOR, SEMPRE SOBRESCREVE.
-            try{
-            StreamWriter writer = new StreamWriter ("LitaAlunosSalas.csv");
-            string listaAlunos = "";
-            //string listaSalas = "";
-            int count = 0;
-            foreach (Aluno item in alunos) {
-                if (item != null) {
-                    if (item.numeroSala != 0) {
-                        listaAlunos += "\"" + item.Nome + "\"" + "," + "\"" + item.numeroSala + "\"" + "," + "\"" + item.DataNascimento + "\"";
-                    } else {
-                        listaAlunos += "\"" + item.Nome + "\"" + "," + "\"" + "Aluno ainda não alocado." + "\"" + "," + "\"" + item.DataNascimento + "\"";
+            try {
+                StreamWriter writer = new StreamWriter ("ListaAlunosSalas.csv");
+
+                //string listaSalas = "";
+                int count = 0;
+                foreach (Aluno item in alunos) {
+                    if (item != null) {
+
+                        string listaAlunos = "\"" + item.Nome + "\"" + "," + "\"" + item.numeroSala + "\"" + "," + "\"" + item.DataNascimento + "\"";
+
+                        //listaAlunos += "\"" + item.Nome + "\"" + "," + "\"" + "Aluno ainda não alocado." + "\"" + "," + "\"" + item.DataNascimento + "\"";
+
+                        writer.WriteLine (listaAlunos);
                     }
-                    writer.WriteLine (listaAlunos);
+                    count++;
                 }
-                count++;
-            }
-            writer.Close ();
-            }catch(IOException erro){
-                System.Console.WriteLine("Erro ao acessar arquivo.");
-                System.Console.WriteLine(erro.Message);
+                writer.Close ();
+            } catch (IOException erro) {
+                System.Console.WriteLine ("Erro ao acessar arquivo.");
+                System.Console.WriteLine (erro.Message);
             }
             /*
             count = 0;
@@ -298,26 +331,6 @@ namespace Senaizinho {
                  count++;
              }
              */
-        }
-        public static void InitList(string FilePath, Aluno[] alunos){
-            try {
-                string[] lista = File.ReadAllLines (FilePath);
-                int count = 0;
-                foreach (string linha in lista) {
-                    string[] itens = linha.Split (",");
-                    string nome = itens[0].Replace ("\"", "");
-                    int numSala = Convert.ToInt32 (itens[1].Replace ("\"", ""));
-                    DateTime data = DateTime.Parse(itens[2].Replace("\"",""));
-
-                    alunos[count] = new Aluno(nome, data);
-                    alunos[count].AlunoNumSala (numSala);
-                    count++;
-                }
-            } catch (IOException erro) {
-                System.Console.WriteLine ("Erro ao acessar arquivo.");
-                System.Console.WriteLine (erro.Message);
-            }
-
         }
     }
 }
