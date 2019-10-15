@@ -62,8 +62,8 @@ namespace Senaizinho {
                         string[] listaAlunos = listaAlunosConcat.Split ("   ");
                         //int alunosCount = 0;
                         foreach (string item in listaAlunos) {
-                            if(item != "") {
-                                item.Replace ("   ","");
+                            if (item != "") {
+                                item.Replace ("   ", "");
                                 if (salas[count] != null) {
                                     salas[count].AlocarAluno (item);
                                     //sala[alunosCount].AlocarAluno(item);
@@ -99,8 +99,7 @@ namespace Senaizinho {
                 string opcao = Console.ReadLine ();
                 switch (opcao) {
                     case "1":
-                        CadastrarAluno (alunos, alunosCadastrados);
-                        alunosCadastrados += 1;
+                        alunosCadastrados = CadastrarAluno (alunos, alunosCadastrados);
                         break;
                     case "2":
                         salasCadastradas = CadastrarSala (salas, salasCadastradas);
@@ -133,7 +132,7 @@ namespace Senaizinho {
         } //PROBLEMAS com cadastro de aluno e sala 
         //* RESOLVIDO: (pode-se cadastrar o mesmo número de sala, sobrescrevendo assim outras salas criadas com mesmo número).
         //* RESOLVIDO: (pode-se cadastrar o mesmo nome de aluno)
-        public static void CadastrarAluno (Aluno[] alunos, int alunosCadastrados) {
+        public static int CadastrarAluno (Aluno[] alunos, int alunosCadastrados) {
             int limiteAlunos = 100;
 
             Console.Clear ();
@@ -149,7 +148,7 @@ namespace Senaizinho {
                                 alunoJaExiste = false;
                             } else {
                                 System.Console.WriteLine ("Este nome já esta em uso.");
-                                Console.ReadLine();
+                                Console.ReadLine ();
                                 alunoJaExiste = true;
                                 break;
                             }
@@ -168,11 +167,12 @@ namespace Senaizinho {
                     }
                     count++;
                 }
-
+                alunosCadastrados++;
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de um novo ALUNO, a escola atingiu sua capacidade máxima.");
                 Console.ReadLine ();
             }
+            return alunosCadastrados;
         }
         public static int CadastrarSala (Sala[] salas, int salasCadastradas) {
             int limiteSalas = 10;
@@ -221,15 +221,17 @@ namespace Senaizinho {
             return salasCadastradas;
         }
         public static void AlocarAluno (Aluno[] alunos, Sala[] salas) { //Chamando informações por parametro.
-        //TODO ARRUMAR: É possível cadastrar o mesmo aluno em várias salas, como também na mesma sala.
+            //PROBLEMA RESOLVIDO: É possível cadastrar o mesmo aluno em várias salas, como também na mesma sala.
             Console.Clear ();
-            //item.numeroSala == numeroSala 
+
             bool alunoExiste = false;
             bool salaExiste = false;
+            bool alunoNaoReplicado = true;
 
             System.Console.Write ("Digite o nome do aluno: ");
             string nomeAluno = Console.ReadLine ();
 
+            //verifica se o aluno existe.
             int index = 0;
             foreach (Aluno item in alunos) { //Para strings não é preciso utilizar item != null.
                 if (item != null) { //null pois cai o programa quando procura-se algo em lugar vazio.
@@ -238,12 +240,13 @@ namespace Senaizinho {
                         break;
                     }
                 }
-                index++;
+                index++; //indice para ser usado na alocação da sala na classe Aluno.
             }
 
             System.Console.WriteLine ("Digite o número da sala que o aluno será alocado: ");
             int numSala = Convert.ToInt32 (Console.ReadLine ());
 
+            //verifica se a sala existe.
             foreach (Sala item in salas) {
                 if (item != null) {
                     if (item.numeroSala == numSala) {
@@ -253,23 +256,44 @@ namespace Senaizinho {
                 }
             }
 
-            if (salaExiste && alunoExiste) {
-                string msg = "";
-                for (int i = 0; i < salas.Length; i++) {
-                    if (salas[i] != null) {
-                        if (i == (numSala - 1)) {
-                            msg = salas[i].AlocarAluno (nomeAluno);
-                            //Adiciona na classe aluno, o número da sala em que foi alocado.
-                            if (msg == "O aluno foi cadastrado com sucesso nesta sala.") {
-                                alunos[index].numeroSala = numSala;
+            //verifica se há algum aluno com mesmo nome em OUTRAS salas.
+            foreach (Sala item in salas) {
+                if (item != null) {
+                    if (item.numeroSala != numSala) { //Cedendo a função de verificar se há o mesmo na sala específica para apenas a classe Sala.
+                        for (int i = 0; i < item.Alunos.Length; i++) {
+                            if (item.Alunos[i] == nomeAluno + "   ") {
+                                alunoNaoReplicado = false;
+                                break;
                             }
-                            break;
                         }
                     }
-                }
-                System.Console.WriteLine (msg);
-                Console.ReadLine ();
 
+                }
+            }
+            string msg = "";
+            if (salaExiste && alunoExiste) {
+                if (alunoNaoReplicado) {
+
+                    for (int i = 0; i < salas.Length; i++) {
+                        if (salas[i] != null) {
+                            if (i == (numSala - 1)) {
+                                msg = salas[i].AlocarAluno (nomeAluno);
+                                //Adiciona na classe aluno, o número da sala em que foi alocado.
+                                if (msg == "O aluno foi cadastrado com sucesso nesta sala.") {
+                                    alunos[index].numeroSala = numSala;
+                                }
+                                System.Console.WriteLine (msg);
+                                Console.ReadLine ();
+                                break;
+
+                            }
+                        }
+                    }
+
+                } else {
+                    System.Console.WriteLine ("Este aluno já esta alocado em outra sala, remova-o da sala antes de realoca-lo.");
+                    Console.ReadLine ();
+                }
             } else {
                 System.Console.WriteLine ("Nome ou número de sala não existem, tente novamente.");
                 Console.ReadLine ();
@@ -279,27 +303,52 @@ namespace Senaizinho {
 
         public static void RemoverAluno (Sala[] salas, Aluno[] alunos) {
             string nome = "";
+            int numSala = 0;
             string msg = "";
+            bool salaExiste = false;
 
             System.Console.Write ("Digite o nome do aluno que será removido: ");
             nome = Console.ReadLine ();
+            System.Console.Write ("Digite o número da sala que o aluno esta alocado: ");
+            numSala = Convert.ToInt32 (Console.ReadLine ());
 
             foreach (Sala item in salas) {
                 if (item != null) {
-                    msg = item.RemoverAluno (nome);
-                    break;
-                }
-            }
-            //Remove da classe aluno, o número da sala em que estava alocado.
-            foreach (Aluno item in alunos) {
-                if (item != null) {
-                    if (item.Nome == nome) {
-                        item.numeroSala = 0;
+                    if (item.numeroSala == numSala) {
+                        salaExiste = true;
+                        break;
                     }
                 }
             }
+            if (salaExiste) {
+                msg = salas[numSala - 1].RemoverAluno (nome);
+
+                //Remove da classe aluno, o número da sala em que estava alocado.
+                foreach (Aluno item in alunos) {
+                    if (item != null) {
+                        if (item.Nome == nome) {
+                            item.numeroSala = 0;
+                        }
+                    }
+                }
+
+            } else {
+                System.Console.WriteLine ("Esta sala não existe.");
+            }
+
             System.Console.WriteLine (msg);
             Console.ReadLine ();
+
+
+            /*foreach (Sala item in salas) {
+                if (item != null) {
+                    if (item.numeroSala == numSala) {
+                        msg = item.RemoverAluno (nome);
+                        break;
+                    }
+                }
+            }*/
+
         }
 
         public static void VerificarSalas (Sala[] salas) {

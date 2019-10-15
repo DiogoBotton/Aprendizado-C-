@@ -14,28 +14,38 @@ namespace Senaizinho.Models {
         public string AlocarAluno (string nome) {
             int index = 0;
             string msg = "";
-
+            bool AlunoNaoReplicado = true;
+            //verifica se o aluno já esta na sala.
             if (this.CapacidadeAtual > 0) {
                 foreach (string item in Alunos) {
-                    if (item == null) {
-                        this.Alunos[index] = nome + "   ";
-                        this.CapacidadeAtual--;
-
-                        msg = "O aluno foi cadastrado com sucesso nesta sala.";
+                    if (item == nome + "   ") {
+                        AlunoNaoReplicado = false;
                         break;
                     }
-                    index++;
                 }
-                return msg;
+                if (AlunoNaoReplicado) {
+                    foreach (string item in Alunos) {
+                        if (item == null) {
+                            this.Alunos[index] = nome + "   ";
+                            this.CapacidadeAtual--;
+
+                            msg = "O aluno foi cadastrado com sucesso nesta sala.";
+                            break;
+                        }
+                        index++;
+                    }
+                } else {
+                    msg = "Este aluno já existe nesta sala.";
+                }
             } else {
                 msg = "Esta sala esta cheia, não foi possível alocar o aluno nesta sala.";
-                return msg;
             }
+            return msg;
         }
 
         public string RemoverAluno (string nome) {
             int index = 0;
-            string msg = "Este aluno não existe em nenhuma sala.";
+            string msg = "Este aluno não existe nesta sala.";
 
             nome = nome + "   ";
 
