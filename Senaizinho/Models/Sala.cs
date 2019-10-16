@@ -1,33 +1,37 @@
 namespace Senaizinho.Models {
     public class Sala {
-        public int CapacidadeAtual { get; set; }
-        public int capacidadeTotal { get; set; }
-        public int numeroSala { get; set; }
-        public string[] Alunos { get; set; }
+        private int _CapacidadeAtual;
+        private int _capacidadeTotal;
+        private int _numeroSala;
+        private string[] _Alunos;
+        //Encapsulamento (escondendo os atributos com private)
+        public int capacidadeTotal { get { return _capacidadeTotal; } }
+        public int numeroSala { get { return _numeroSala; } }
+        public string[] Alunos { get { return _Alunos; } }
 
         public Sala (int numeroSala, int capacidadeTotal) {
-            this.numeroSala = numeroSala;
-            this.capacidadeTotal = capacidadeTotal;
-            this.Alunos = new string[capacidadeTotal];
-            this.CapacidadeAtual = this.capacidadeTotal;
+            this._numeroSala = numeroSala;
+            this._capacidadeTotal = capacidadeTotal;
+            this._Alunos = new string[capacidadeTotal];
+            this._CapacidadeAtual = this._capacidadeTotal;
         }
         public string AlocarAluno (string nome) {
             int index = 0;
             string msg = "";
             bool AlunoNaoReplicado = true;
-            //verifica se o aluno já esta na sala.
-            if (this.CapacidadeAtual > 0) {
-                foreach (string item in Alunos) {
+            if (this._CapacidadeAtual > 0) {
+                //verifica se o aluno já existe na sala.
+                foreach (string item in _Alunos) {
                     if (item == nome + "   ") {
                         AlunoNaoReplicado = false;
                         break;
                     }
                 }
                 if (AlunoNaoReplicado) {
-                    foreach (string item in Alunos) {
+                    foreach (string item in _Alunos) {
                         if (item == null) {
-                            this.Alunos[index] = nome + "   ";
-                            this.CapacidadeAtual--;
+                            this._Alunos[index] = nome + "   ";
+                            this._CapacidadeAtual--;
 
                             msg = "O aluno foi cadastrado com sucesso nesta sala.";
                             break;
@@ -50,14 +54,14 @@ namespace Senaizinho.Models {
             nome = nome + "   ";
 
             //TODO SALA VAZIA
-            if (this.CapacidadeAtual == this.capacidadeTotal) {
+            if (this._CapacidadeAtual == this._capacidadeTotal) {
                 msg = "A sala esta vazia.";
             } else {
 
-                foreach (string item in this.Alunos) {
+                foreach (string item in this._Alunos) {
                     if (item == nome) {
-                        this.Alunos[index] = "";
-                        this.CapacidadeAtual++;
+                        this._Alunos[index] = "";
+                        this._CapacidadeAtual++;
                         msg = "O aluno foi removido da sala com sucesso.";
                         break;
                     }
@@ -72,8 +76,8 @@ namespace Senaizinho.Models {
             //int numAlunos = this.capacidadeTotal - this.CapacidadeAtual;
             //System.Console.WriteLine ($"  Qtd de alunos: {numAlunos}");
 
-            if (this.CapacidadeAtual != this.capacidadeTotal) {
-                foreach (string aluno in Alunos) {
+            if (this._CapacidadeAtual != this._capacidadeTotal) {
+                foreach (string aluno in _Alunos) {
                     if (aluno != null) {
                         listaAlunos += aluno;
                     }

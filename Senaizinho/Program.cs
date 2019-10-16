@@ -34,7 +34,8 @@ namespace Senaizinho {
                     DateTime data = DateTime.Parse (itens[2].Replace ("\"", ""));
 
                     alunos[count] = new Aluno (nome, data);
-                    alunos[count].AlunoNumSala (numSala);
+                    alunos[count].AlunoNumSala(numSala);
+
                     //alunosMatriculados.Add(alunos[count]);
 
                     count++;
@@ -280,7 +281,7 @@ namespace Senaizinho {
                                 msg = salas[i].AlocarAluno (nomeAluno);
                                 //Adiciona na classe aluno, o número da sala em que foi alocado.
                                 if (msg == "O aluno foi cadastrado com sucesso nesta sala.") {
-                                    alunos[index].numeroSala = numSala;
+                                    alunos[index].AlunoNumSala(numSala);
                                 }
                                 System.Console.WriteLine (msg);
                                 Console.ReadLine ();
@@ -327,7 +328,7 @@ namespace Senaizinho {
                 foreach (Aluno item in alunos) {
                     if (item != null) {
                         if (item.Nome == nome) {
-                            item.numeroSala = 0;
+                            item.AlunoNumSala(0);
                         }
                     }
                 }
