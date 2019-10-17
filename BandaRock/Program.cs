@@ -7,6 +7,7 @@ namespace BandaRock {
     enum FormacaoEnum : int {
         TRIO = 3,
         QUARTETO
+        //QUINTETO
     }
     enum InstrumentosEnum : int {
         BAIXO,
@@ -25,17 +26,18 @@ namespace BandaRock {
     class Program {
         static void Main (string[] args) {
             string[] ItensMenuPrincipal = Enum.GetNames (typeof (FormacaoEnum));
-            string[] ItensMenuCategoria = Enum.GetName (typeof (CategoriaEnum));
+            string[] ItensMenuCategoria = Enum.GetNames (typeof (CategoriaEnum));
 
             int opcaoFormacaoSelecionada = 0;
             var opcoesFormacao = new List<string> () {
                 "   -0                  ",
                 "   -1             "
+                //"   -2             "
             };
 
             bool querSair = false;
             do {
-                bool formacaoEscolhida = false;
+                //bool formacaoEscolhida = false;
                 Console.Clear ();
                 System.Console.WriteLine ("|____Banda de Rock____|");
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
@@ -51,7 +53,7 @@ namespace BandaRock {
                         System.Console.WriteLine (opcoesFormacao[opcaoFormacaoSelecionada].Replace ("-", ">").Replace (i.ToString (), titulo));
                         Console.ResetColor ();
                     } else {
-                        System.Console.WriteLine ();
+                        System.Console.WriteLine (opcoesFormacao[i].Replace (i.ToString (), titulo));
                     }
                 }
 
@@ -59,11 +61,13 @@ namespace BandaRock {
                 //Readkey (TRUE) fica monitorando o teclado 
                 switch (key) {
                     case ConsoleKey.UpArrow:
-                        opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == 0 ? opcaoFormacaoSelecionada : --opcaoFormacaoSelecionada;
+                        opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == 0 ? opcaoFormacaoSelecionada = opcoesFormacao.Count -1 : --opcaoFormacaoSelecionada;
                         break;
                     case ConsoleKey.DownArrow:
+                        opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == opcoesFormacao.Count - 1 ? opcaoFormacaoSelecionada = 0 : ++opcaoFormacaoSelecionada;
                         break;
                     case ConsoleKey.Enter:
+                        //formacaoEscolhida = true;
                         break;
                 }
 

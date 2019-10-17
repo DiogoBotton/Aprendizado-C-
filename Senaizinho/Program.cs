@@ -169,6 +169,9 @@ namespace Senaizinho {
                     count++;
                 }
                 alunosCadastrados++;
+
+                System.Console.WriteLine("O aluno foi cadastrado com sucesso na escola.");
+                Console.ReadLine();
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de um novo ALUNO, a escola atingiu sua capacidade máxima.");
                 Console.ReadLine ();
@@ -214,6 +217,9 @@ namespace Senaizinho {
 
                 Sala sala = new Sala (numSala, capacidade);
                 salas[numSala - 1] = sala;
+                
+                System.Console.WriteLine("O aluno foi cadastrado com sucesso na escola.");
+                Console.ReadLine();
             } else {
                 System.Console.WriteLine ("Não é possível o cadastro de uma nova SALA, a escola atingiu sua capacidade máxima.");
                 Console.ReadLine ();
