@@ -36,8 +36,8 @@ namespace BandaRock {
             };
 
             bool querSair = false;
+            //bool formacaoEscolhida = false;
             do {
-                //bool formacaoEscolhida = false;
                 Console.Clear ();
                 System.Console.WriteLine ("|____Banda de Rock____|");
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
@@ -57,11 +57,11 @@ namespace BandaRock {
                     }
                 }
 
-                var key = Console.ReadKey(true).Key; // VAR deduz o tipo da variável automaticamente, pela informação que é passada para ela (key).
+                var key = Console.ReadKey (true).Key; // VAR deduz o tipo da variável automaticamente, pela informação que é passada para ela (key).
                 //Readkey (TRUE) fica monitorando o teclado 
                 switch (key) {
                     case ConsoleKey.UpArrow:
-                        opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == 0 ? opcaoFormacaoSelecionada = opcoesFormacao.Count -1 : --opcaoFormacaoSelecionada;
+                        opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == 0 ? opcaoFormacaoSelecionada = opcoesFormacao.Count - 1 : --opcaoFormacaoSelecionada;
                         break;
                     case ConsoleKey.DownArrow:
                         opcaoFormacaoSelecionada = opcaoFormacaoSelecionada == opcoesFormacao.Count - 1 ? opcaoFormacaoSelecionada = 0 : ++opcaoFormacaoSelecionada;
@@ -70,8 +70,10 @@ namespace BandaRock {
                         //formacaoEscolhida = true;
                         break;
                 }
-
+                
             } while (!querSair);
+
+            
         }
     }
 }
