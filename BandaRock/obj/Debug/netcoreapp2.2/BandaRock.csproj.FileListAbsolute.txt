@@ -9,3 +9,14 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\banda
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\bin\Debug\netcoreapp2.2\BandaRock.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\bandarock\obj\Debug\netcoreapp2.2\BandaRock.pdb

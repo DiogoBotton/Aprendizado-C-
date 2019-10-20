@@ -5,13 +5,19 @@ using ByteBank2.Models;
 namespace ByteBank2 {
     class Program {
         static void Main (string[] args) {
+            /*List<ContaBancaria> listContas = new List<ContaBancaria> ();
+            CriarConta (listContas);
+            
+            foreach (var conta in listContas)
+            {
+                System.Console.WriteLine("Titulares: " + conta.Titular);
+            }*/
+            
             ContaCorrente contaC1 = new ContaCorrente (1, 1, "Cesar");
             ContaCorrente contaC2 = new ContaCorrente (4545, 9090, "Zézinho");
             ContaEspecial contaE1 = new ContaEspecial (2, 2, "Alexandre");
+            ContaBancaria[] Contas = new ContaBancaria[1];
             
-            //ContaBancaria[] Contas = new ContaBancaria[1];
-            //List<ContaBancaria> ContasA = new List<ContaBancaria>();
-            contaE1.SetLimite(500);
 
             #region Ações do usuário ByteBank.
 
@@ -23,23 +29,68 @@ namespace ByteBank2 {
                 System.Console.WriteLine ("3 para Transferência.");
                 System.Console.WriteLine ("0 para Sair do programa.");
                 escolhaAcao = Console.ReadLine ();
-                
+
                 switch (escolhaAcao) {
                     case "1":
                         DepositarConta (contaC1);
                         break;
 
                     case "2":
-                        SacarConta(contaC1);
+                        SacarConta (contaC1);
                         break;
 
                     case "3":
-                        TransferenciaConta(contaC1, contaC2);
+                        TransferenciaConta (contaC1, contaC2);
                         break;
                 }
 
             }
             #endregion
+
+        }
+        public static void CriarConta (List<ContaBancaria> listContas) {
+            Console.Clear();
+            System.Console.Write ("Entre com o titular da conta: ");
+            string titular = Console.ReadLine ();
+            System.Console.Write ("Entre com o N° da agência: ");
+            int agencia = Convert.ToInt32 (Console.ReadLine ());
+            System.Console.Write ("Entre com o N° da conta: ");
+            int numConta = Convert.ToInt32 (Console.ReadLine ());
+
+            bool escolheuConta = false;
+            do {
+
+                Console.Clear ();
+                System.Console.WriteLine ("Entre com o tipo de conta:");
+                System.Console.WriteLine ("1 para Conta Corrente.");
+                System.Console.WriteLine ("2 para Conta Especial.");
+                string tipoConta = Console.ReadLine ();
+
+                switch (tipoConta) {
+                    case "1":
+                        ContaCorrente contaCorrente = new ContaCorrente (agencia, numConta, titular);
+                        listContas.Add (contaCorrente);
+                        escolheuConta = true;
+                        break;
+                    case "2":
+                        ContaEspecial contaEspecial = new ContaEspecial (agencia, numConta, titular);
+                        System.Console.Write ("Entre com o limite de cheque especial da conta: ");
+                        int limite = Convert.ToInt32 (Console.ReadLine ());
+                        contaEspecial.SetLimite (limite);
+
+                        listContas.Add (contaEspecial);
+
+                        escolheuConta = true;
+                        break;
+                    default:
+                        System.Console.WriteLine ("Comando Inválido");
+                        break;
+                }
+            } while (!escolheuConta);
+
+            if(escolheuConta){
+                System.Console.WriteLine("Conta criada com sucesso.");
+            }
 
         }
         public static void DepositarConta (ContaBancaria contaBancaria) {
@@ -54,7 +105,7 @@ namespace ByteBank2 {
             if (valor >= 0) {
                 System.Console.WriteLine ($"Seu novo saldo agora é R${contaBancaria.Saldo}.");
             }
-            
+
         }
         public static void SacarConta (ContaBancaria contaBancaria) {
             double valor = 0;
