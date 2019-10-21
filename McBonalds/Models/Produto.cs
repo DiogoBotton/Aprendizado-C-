@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace McBonalds.Models
 {
-    public abstract class Produto
+    public abstract class Produto 
     {
         public string Nome;
         public double Preco;
