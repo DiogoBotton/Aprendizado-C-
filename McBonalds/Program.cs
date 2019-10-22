@@ -11,11 +11,7 @@ namespace McBonalds {
             //PROBLEMA: Se o programa for salvo em csv, sempre vai acrescentar à lista de clientes mais uma conta ADMIN.
             List<Cliente> listClientes = new List<Cliente> () { new Cliente ("admin", "admin") };
             //TODO: Pergunta: o ADM pode estar na lista de CLIENTES??
-
-            List<Shake> shakes = new List<Shake> () { { new Shake ("Shake de Cholate", 10.99) }, { new Shake ("Shake de Morango", 9.90) }, { new Shake ("Shake de Nutella", 12.90) }
-            };
-            List<Hamburguer> hamburgueres = new List<Hamburguer> () { { new Hamburguer ("Hambúrguer Vegano", 10.90) }, { new Hamburguer ("Hambúrguer FURIOSO", 12.90) }, { new Hamburguer ("Hambúrguer Vegano", 11.90) }
-            };
+            Queue<Pedido> pedidos = new Queue<Pedido> ();
 
             int indexList = 0;
             bool querSair = false;
@@ -53,121 +49,61 @@ namespace McBonalds {
 
                                     System.Console.WriteLine ($"Olá, {usuario.Nome}! Seja Bem Vindo ");
                                     System.Console.WriteLine ("Escolha uma das opções abaixo:");
-                                    System.Console.WriteLine ("1 - Comprar Hamburgueres.");
-                                    System.Console.WriteLine ("2 - Comprar Shakes.");
-                                    System.Console.WriteLine ("3 - Adicionar saldo na carteira.");
+                                    System.Console.WriteLine ("1 - Fazer um pedido.");
+                                    System.Console.WriteLine ("2 - Adicionar saldo na carteira.");
                                     System.Console.WriteLine ("0 - Sair da Conta.");
                                     string opcoesLogado = Console.ReadLine ();
-
-                                    switch (opcoesLogado) {
-                                        case "1":
-                                            Console.Clear ();
-
-                                            bool compraConcluida = false;
-
-                                            int codigoH = 0;
-                                            do {
-                                                ExibirMenuHamburgueres (hamburgueres);
-
-                                                System.Console.WriteLine ("Digite o código do hambúrguer desejado.");
-                                                codigoH = Convert.ToInt32 (Console.ReadLine ());
-                                                if (codigoH <= 0 || codigoH > shakes.Count) {
-                                                    System.Console.WriteLine ("Código Inválido.");
-                                                    Console.ReadLine();
                                                     
-                                                }
-                                            } while (codigoH <= 0 || codigoH > shakes.Count);
+                                        switch (opcoesLogado) {
+                                            case "1":
 
-                                            Hamburguer hbg = hamburgueres[codigoH - 1];
+                                                Console.Clear ();
+                                                System.Console.WriteLine ("O que você deseja pedir? Digite o código.");
+                                                System.Console.WriteLine ("1- Pedir Hamburgueres.");
+                                                System.Console.WriteLine ("2- Pedir Shakes.");
+                                                string opcoesPedido = Console.ReadLine ();
+                                                //TODO PERGUNTA: COMO IRÁ PEDIR MAIS DE UM PRODUTO POR PEDIDO?
+                                                //TODO: ACRESCENTAR + UM PEDIDO CASO CLIENTE DESEJAR MAIS ALGUM PRODUTO.
+                                                FazerPedido (opcoesPedido, usuario);
+                                                break;
 
-                                            compraConcluida = usuario.ComprarProduto (hbg.Preco);
-
-                                            if (compraConcluida) {
+                                            case "2":
                                                 Console.Clear ();
 
-                                                System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
-                                                System.Console.WriteLine ($"Você comprou [{hbg.Nome}] por [R$ {hbg.Preco}].");
-                                                System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
-                                                Console.ReadLine ();
-                                            } else {
-                                                Console.Clear ();
+                                                bool depositoRealizado = false;
 
-                                                System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo suficiente na carteira McBonalds.");
-                                                System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
-                                                Console.ReadLine ();
-                                            }
+                                                System.Console.Write ("Digite o valor que será depositado na carteira McBonalds: ");
+                                                double valor = Convert.ToInt32 (Console.ReadLine ());
 
-                                            break;
+                                                depositoRealizado = usuario.AdcSaldoCarteira (valor);
 
-                                        case "2":
-                                            Console.Clear ();
-                                            int codigoS = 0;
-                                            do {
-                                                ExibirMenuShakes (shakes);
-                                                System.Console.WriteLine ("Digite o código do hambúrguer desejado.");
-                                                codigoS = Convert.ToInt32 (Console.ReadLine ());
-
-                                                if (codigoS <= 0 || codigoS > shakes.Count) {
-                                                    System.Console.WriteLine ("Código Inválido.");
-                                                    Console.ReadLine();
+                                                if (depositoRealizado) {
+                                                    System.Console.WriteLine ($"Foi depositado [R$ {valor}] na sua carteira.");
+                                                    System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
                                                     
+                                                    Console.ReadLine ();
+                                                } else {
+                                                    System.Console.WriteLine ("Não foi possível fazer o deposito na carteira McBonalds.");
+                                                    System.Console.WriteLine ("Verifique se você utilizou de números negativos ou nulos.");
+                                                    
+                                                    Console.ReadLine ();
                                                 }
-                                            } while (codigoS <= 0 || codigoS > shakes.Count);
 
-                                            Shake shk = shakes[codigoS - 1];
+                                                break;
 
-                                            compraConcluida = usuario.ComprarProduto (shk.Preco);
-
-                                            if (compraConcluida) {
-                                                Console.Clear ();
-
-                                                System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
-                                                System.Console.WriteLine ($"Você comprou [{shk.Nome}] por [R$ {shk.Preco}].");
-                                                System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
+                                            case "0":
+                                                System.Console.WriteLine ($"Até mais {usuario.Nome}, volte sempre!");
+                                                System.Console.WriteLine ("Você deslogou.");
                                                 Console.ReadLine ();
-                                            } else {
-                                                Console.Clear ();
+                                                
+                                                saiuDaConta = true;
+                                                break;
 
-                                                System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo na carteira McBonalds.");
-                                                System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
-                                                Console.ReadLine ();
-                                            }
-
-                                            break;
-
-                                        case "3":
-                                            Console.Clear ();
-
-                                            bool depositoRealizado = false;
-
-                                            System.Console.Write ("Digite o valor que será depositado na carteira McBonalds: ");
-                                            double valor = Convert.ToInt32 (Console.ReadLine ());
-
-                                            depositoRealizado = usuario.AdcSaldoCarteira (valor);
-
-                                            if (depositoRealizado) {
-                                                System.Console.WriteLine ($"Foi depositado [R$ {valor}] na sua carteira.");
-                                                System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
-                                                Console.ReadLine ();
-                                            } else {
-                                                System.Console.WriteLine ("Não foi possível fazer o deposito na carteira McBonalds.");
-                                                System.Console.WriteLine ("Verifique se você utilizou de números negativos ou nulos.");
-                                                Console.ReadLine ();
-                                            }
-
-                                            break;
-
-                                        case "0":
-                                            System.Console.WriteLine ($"Até mais {usuario.Nome}, volte sempre!");
-                                            System.Console.WriteLine ("Você deslogou.");
-                                            Console.ReadLine ();
-                                            saiuDaConta = true;
-                                            break;
-
-                                        default:
-                                            System.Console.WriteLine ("Comando Inválido.");
-                                            break;
-                                    }
+                                            default:
+                                                System.Console.WriteLine ("Comando Inválido.");
+                                                break;
+                                        }
+                                    
                                 } while (!saiuDaConta);
                                 #endregion
                             } else {
@@ -225,14 +161,14 @@ namespace McBonalds {
                             string opcaoView = Console.ReadLine ();
                             switch (opcaoView) {
                                 case "1":
-                                    ExibirMenuHamburgueres (hamburgueres);
+                                    ExibirMenuHamburgueres (out int HamburguerCount);
                                     System.Console.WriteLine ("Para comprar algum produto, você deve estar cadastrado e logado.");
                                     Console.ReadLine ();
 
                                     break;
 
                                 case "2":
-                                    ExibirMenuShakes (shakes);
+                                    ExibirMenuShakes (out int ShakeCount);
                                     System.Console.WriteLine ("Para comprar algum produto, você deve estar cadastrado e logado.");
                                     Console.ReadLine ();
 
@@ -383,9 +319,9 @@ namespace McBonalds {
             }
 
         }
-        public static void ExibirMenuHamburgueres (List<Hamburguer> hamburgueres) {
+        public static void ExibirMenuHamburgueres (out int HamburguerCount) {
             Console.Clear ();
-
+            var hamburgueres = Produto.listHamburgueres;
             int codigo = 1;
 
             System.Console.WriteLine ("################################");
@@ -394,13 +330,14 @@ namespace McBonalds {
             System.Console.WriteLine ("#                            #");
             System.Console.WriteLine ("################################");
 
-            foreach (Hamburguer hbg in hamburgueres) {
-                System.Console.WriteLine ($"  {codigo++}.{hbg.Nome}  Preço: R$ {hbg.Preco}");
+            foreach (var hbg in hamburgueres.Values) {
+                System.Console.WriteLine ($"  {codigo++}.{hbg.MostrarProduto()}");
             }
+            HamburguerCount = hamburgueres.Count;
         }
-        public static void ExibirMenuShakes (List<Shake> shakes) {
+        public static void ExibirMenuShakes (out int ShakeCount) {
             Console.Clear ();
-
+            var shakes = Produto.listShakes;
             int codigo = 1;
 
             System.Console.WriteLine ("################################");
@@ -409,9 +346,146 @@ namespace McBonalds {
             System.Console.WriteLine ("#                            #");
             System.Console.WriteLine ("################################");
 
-            foreach (Shake shk in shakes) {
-                System.Console.WriteLine ($"  {codigo++}.{shk.Nome}  Preço: R$ {shk.Preco}");
+            foreach (var shk in shakes.Values) {
+                System.Console.WriteLine ($"  {codigo++}.{shk.MostrarProduto()}");
             }
+            ShakeCount = shakes.Count;
+        }
+        public static void FazerPedido (string opcoesPedido, Cliente usuario) {
+            bool compraConcluida = false;
+            bool finalizarAcao = false;
+            do {
+
+                switch (opcoesPedido) {
+                    case "1":
+                        Console.Clear ();
+                        int HamburguerCount = 0;
+
+                        int codigoH = 0;
+                        do {
+                            ExibirMenuHamburgueres (out HamburguerCount);
+
+                            System.Console.WriteLine ("Digite o código do hambúrguer desejado.");
+                            codigoH = Convert.ToInt32 (Console.ReadLine ());
+                            if (codigoH <= 0 || codigoH > HamburguerCount) {
+                                System.Console.WriteLine ("Código Inválido.");
+                                Console.ReadLine ();
+
+                            }
+                        } while (codigoH <= 0 || codigoH > HamburguerCount);
+
+                        int qtdH = 0;
+                        do {
+
+                            System.Console.Write ("Digite a Quantidade: ");
+                            qtdH = Convert.ToInt32 (Console.ReadLine ());
+                            if (qtdH < 1) {
+                                System.Console.WriteLine ("Digite um valor válido.");
+                                Console.ReadLine ();
+                            }
+                        } while (qtdH < 1);
+
+                        var hbg = Produto.listHamburgueres[codigoH];
+                        double precoH = hbg.RetornarPreco ();
+                        precoH = precoH * qtdH;
+                        System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
+                        string maisPedidosH = Console.ReadLine ();
+
+                        switch (maisPedidosH) {
+                            case "s":
+                                continue;
+                            case "n":
+                                compraConcluida = usuario.ComprarProduto (precoH);
+                                finalizarAcao = true;
+                                break;
+                            default:
+                                System.Console.WriteLine ("Comando Inválido.");
+                                break;
+                        }
+
+                        if (compraConcluida) {
+                            Console.Clear ();
+
+                            System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
+                            System.Console.WriteLine ($"Você comprou [{qtdH}] unidade(s) de [{hbg.RetornarNome()}] por [R$ {precoH}].");
+                            System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
+                            Console.ReadLine ();
+                        } else {
+                            Console.Clear ();
+
+                            System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo suficiente na carteira McBonalds.");
+                            System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
+                            Console.ReadLine ();
+                        }
+
+                        break;
+
+                    case "2":
+                        Console.Clear ();
+                        int ShakeCount = 0;
+                        int codigoS = 0;
+                        do {
+                            ExibirMenuShakes (out ShakeCount);
+                            System.Console.WriteLine ("Digite o código do hambúrguer desejado.");
+                            codigoS = Convert.ToInt32 (Console.ReadLine ());
+
+                            if (codigoS <= 0 || codigoS > ShakeCount) {
+                                System.Console.WriteLine ("Código Inválido.");
+                                Console.ReadLine ();
+
+                            }
+                        } while (codigoS <= 0 || codigoS > ShakeCount);
+
+                        int qtdS = 0;
+                        do {
+
+                            System.Console.Write ("Digite a Quantidade: ");
+                            qtdS = Convert.ToInt32 (Console.ReadLine ());
+                            if (qtdS < 1) {
+                                System.Console.WriteLine ("Digite um valor válido.");
+                                Console.ReadLine ();
+                            }
+                        } while (qtdS < 1);
+
+                        var shk = Produto.listShakes[codigoS];
+                        double precoS = shk.RetornarPreco ();
+                        precoS = precoS * qtdS;
+                        System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
+                        string maisPedidosSHK = Console.ReadLine ();
+
+                        switch (maisPedidosSHK) {
+                            case "s":
+                                continue;
+                            case "n":
+                                compraConcluida = usuario.ComprarProduto (precoS);
+                                finalizarAcao = true;
+                                break;
+                            default:
+                                System.Console.WriteLine ("Comando Inválido.");
+                                break;
+                        }
+
+                        if (compraConcluida) {
+                            Console.Clear ();
+
+                            System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
+                            System.Console.WriteLine ($"Você comprou [{qtdS}] unidade(s) de [{shk.RetornarNome()}] por [R$ {precoS}].");
+                            System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
+                            Console.ReadLine ();
+                        } else {
+                            Console.Clear ();
+
+                            System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo na carteira McBonalds.");
+                            System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
+                            Console.ReadLine ();
+                        }
+                        break;
+                    default:
+                        System.Console.WriteLine ("Comando Inválido.");
+                        break;
+
+                }
+            } while (!finalizarAcao);
         }
 
     }

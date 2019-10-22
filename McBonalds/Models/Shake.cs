@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-namespace McBonalds.Models
-{
-    public class Shake : Produto
-    {
-        public Shake(string Nome, double Preco) : base (Nome, Preco){
-
-        }
+namespace McBonalds.Models {
+    public abstract class Shake : Produto {
+        public abstract string MostrarProduto ();
+        public abstract double RetornarPreco();
+        public abstract string RetornarNome();
     }
 }
