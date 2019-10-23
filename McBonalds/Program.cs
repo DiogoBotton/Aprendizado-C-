@@ -401,7 +401,7 @@ namespace McBonalds {
 
                             }
                         } while (codigoH <= 0 || codigoH > HamburguerCount);
-
+                        
                         int qtdH = 0;
                         do {
 
@@ -414,7 +414,7 @@ namespace McBonalds {
                         } while (qtdH < 1);
 
                         var hbg = Produto.listHamburgueres[codigoH];
-
+                        
                         System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
                         string maisPedidosH = Console.ReadLine ();
 
@@ -423,7 +423,7 @@ namespace McBonalds {
                                 precoTotal = pedidosUsuario.CalcularPedido (hbg, hbg.RetornarPreco (), qtdH);
                                 //pedidosUsuario.GerarPedido (hbg);
                                 listPedidoProdutos.Add (hbg);
-
+                        
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;

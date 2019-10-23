@@ -3,11 +3,8 @@ namespace Reciclagem.Models
 {
     public class GarrafaPET : Lixo, VermelhoPlastico
     {
-        public override string JogarNoLixo(){
-            return "Você jogou GarrafaPET no lixo.";
-        }
-        public override string Lixeira(){
-            return "Você jogou no lixo VERMELHO.";
+        public string ReciclarPlastico(){
+            return this.GetType().Name;
         }
     }
 }

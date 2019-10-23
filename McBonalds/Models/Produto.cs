@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace McBonalds.Models
 {
-    public abstract class Produto 
+    public class Produto 
     {
         public static Dictionary<int, Hamburguer> listHamburgueres = new Dictionary<int, Hamburguer>(){
             {1, new HamburguerVegano()},

@@ -13,7 +13,7 @@ namespace McBonalds.Models {
                     if (item != pedido) {
                         this.produtos.Add (pedido);
                     }
-
+                    
                 }
             }
         }

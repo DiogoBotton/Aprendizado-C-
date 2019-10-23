@@ -4,6 +4,7 @@ namespace McBonalds.Models
     {
         private string _Nome;
         private double _Preco;
+        public int Qtd;
         public string Nome{
             get {return _Nome;}
         }
@@ -17,7 +18,7 @@ namespace McBonalds.Models
         }
 
         public override string MostrarProduto(){
-            return this._Nome + "  R$ " + this._Preco;
+            return _Nome + "  R$ " + _Preco;
         }
         public override double RetornarPreco(){
             return _Preco;
