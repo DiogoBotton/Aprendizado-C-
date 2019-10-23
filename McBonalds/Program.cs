@@ -54,22 +54,41 @@ namespace McBonalds {
                                     System.Console.WriteLine ("2 - Adicionar saldo na carteira.");
                                     System.Console.WriteLine ("0 - Sair da Conta.");
                                     string opcoesLogado = Console.ReadLine ();
+
                                     int opcoesPedido = 0;
+                                    bool compraConcluida = false;
                                     switch (opcoesLogado) {
                                         case "1":
                                             do {
-                                                do{
+                                                do {
 
-                                                Console.Clear ();
-                                                System.Console.WriteLine ("O que você deseja pedir? Digite o código.");
-                                                System.Console.WriteLine ("1- Pedir Hamburgueres.");
-                                                System.Console.WriteLine ("2- Pedir Shakes.");
-                                                opcoesPedido = Convert.ToInt32(Console.ReadLine ());
-                                                }while(opcoesPedido < 1 || opcoesPedido > 2);
+                                                    Console.Clear ();
+                                                    System.Console.WriteLine ("O que você deseja pedir? Digite o código.");
+                                                    System.Console.WriteLine ("1- Pedir Hamburgueres.");
+                                                    System.Console.WriteLine ("2- Pedir Shakes.");
+                                                    opcoesPedido = Convert.ToInt32 (Console.ReadLine ());
+                                                } while (opcoesPedido < 1 || opcoesPedido > 2);
                                                 //TODO PERGUNTA: COMO IRÁ PEDIR MAIS DE UM PRODUTO POR PEDIDO?
                                                 //TODO: ACRESCENTAR + UM PEDIDO CASO CLIENTE DESEJAR MAIS ALGUM PRODUTO.
-                                                FazerPedido (opcoesPedido, usuario, pedidosUsuario, out repetirProcesso);
+                                                compraConcluida = FazerPedido (opcoesPedido, usuario, pedidosUsuario, out repetirProcesso);
                                             } while (repetirProcesso);
+
+                                            if (compraConcluida) {
+                                                Console.Clear ();
+
+                                                System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
+                                                //TODO: Fazer lista de produtos comprados.
+                                                System.Console.WriteLine ($"Você comprou [numero] unidade(s) de [produto] por [R$ preço].");
+                                                System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
+                                                Console.ReadLine ();
+                                            } else {
+                                                Console.Clear ();
+
+                                                System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo suficiente na carteira McBonalds.");
+                                                System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
+                                                Console.ReadLine ();
+                                            }
+
                                             break;
 
                                         case "2":
@@ -356,10 +375,13 @@ namespace McBonalds {
             }
             ShakeCount = shakes.Count;
         }
-        public static void FazerPedido (int opcoesPedido, Cliente usuario, Pedido pedidosUsuario, out bool repetirProcesso) {
+        public static bool FazerPedido (int opcoesPedido, Cliente usuario, Pedido pedidosUsuario, out bool repetirProcesso) {
             bool compraConcluida = false;
             bool finalizarAcao = false;
             repetirProcesso = false;
+            double precoTotal = 0;
+
+            List<Produto> listPedidoProdutos = new List<Produto> ();
             do {
 
                 switch (opcoesPedido) {
@@ -392,20 +414,30 @@ namespace McBonalds {
                         } while (qtdH < 1);
 
                         var hbg = Produto.listHamburgueres[codigoH];
-                        double precoH = hbg.RetornarPreco ();
-                        precoH = precoH * qtdH;
+
                         System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
                         string maisPedidosH = Console.ReadLine ();
 
                         switch (maisPedidosH) {
                             case "s":
-                                //double precoTotal = pedidosUsuario.CalcularPedido(hbg.RetornarPreco(), qtdH);
+                                precoTotal = pedidosUsuario.CalcularPedido (hbg, hbg.RetornarPreco (), qtdH);
+                                //pedidosUsuario.GerarPedido (hbg);
+                                listPedidoProdutos.Add (hbg);
+
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                double precoTotal = pedidosUsuario.CalcularPedido(hbg.RetornarPreco(), qtdH);
+                                precoTotal = pedidosUsuario.CalcularPedido (hbg, hbg.RetornarPreco (), qtdH);
+                                //pedidosUsuario.GerarPedido (hbg);
+                                listPedidoProdutos.Add (hbg);
+
+                                //TODO: finalizar pedido aqui
                                 compraConcluida = usuario.ComprarProduto (precoTotal);
+                                if (compraConcluida) {
+                                    pedidosUsuario.GerarPedido (listPedidoProdutos);
+                                }
+
                                 finalizarAcao = true;
                                 repetirProcesso = false;
                                 break;
@@ -413,24 +445,6 @@ namespace McBonalds {
                                 System.Console.WriteLine ("Comando Inválido.");
                                 break;
                         }
-
-                        if (compraConcluida) {
-                            Console.Clear ();
-
-                            System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
-                            System.Console.WriteLine ($"Você comprou [{qtdH}] unidade(s) de [{hbg.RetornarNome()}] por [R$ {precoH}].");
-                            System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
-                            Console.ReadLine ();
-                            repetirProcesso = false;
-                        } else {
-                            Console.Clear ();
-
-                            System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo suficiente na carteira McBonalds.");
-                            System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
-                            Console.ReadLine ();
-                            repetirProcesso = false;
-                        }
-
                         break;
 
                     case 2:
@@ -461,41 +475,40 @@ namespace McBonalds {
                         } while (qtdS < 1);
 
                         var shk = Produto.listShakes[codigoS];
-                        double precoS = shk.RetornarPreco ();
-                        precoS = precoS * qtdS;
+
                         System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
                         string maisPedidosSHK = Console.ReadLine ();
 
                         switch (maisPedidosSHK) {
                             case "s":
+                                precoTotal = pedidosUsuario.CalcularPedido (shk, shk.RetornarPreco (), qtdS);
+                                //pedidosUsuario.GerarPedido (shk);
+                                listPedidoProdutos.Add (shk);
+
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                compraConcluida = usuario.ComprarProduto (precoS);
+                                precoTotal = pedidosUsuario.CalcularPedido (shk, shk.RetornarPreco (), qtdS);
+                                //pedidosUsuario.GerarPedido (shk);
+                                listPedidoProdutos.Add (shk);
+
+                                //TODO: finalizar pedido aqui
+                                compraConcluida = usuario.ComprarProduto (precoTotal);
+                                if (compraConcluida) {
+                                    pedidosUsuario.GerarPedido (listPedidoProdutos);
+                                    listPedidoProdutos.Clear();
+                                }
+                                else{
+                                    listPedidoProdutos.Clear();
+                                }
+
                                 finalizarAcao = true;
                                 repetirProcesso = false;
                                 break;
                             default:
                                 System.Console.WriteLine ("Comando Inválido.");
                                 break;
-                        }
-
-                        if (compraConcluida) {
-                            Console.Clear ();
-
-                            System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
-                            System.Console.WriteLine ($"Você comprou [{qtdS}] unidade(s) de [{shk.RetornarNome()}] por [R$ {precoS}].");
-                            System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
-                            Console.ReadLine ();
-                            repetirProcesso = false;
-                        } else {
-                            Console.Clear ();
-
-                            System.Console.WriteLine ("Não foi possível realizar a compra, você não possúi saldo na carteira McBonalds.");
-                            System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
-                            Console.ReadLine ();
-                            repetirProcesso = false;
                         }
                         break;
                     default:
@@ -504,6 +517,8 @@ namespace McBonalds {
 
                 }
             } while (!finalizarAcao);
+
+            return compraConcluida;
         }
 
     }
