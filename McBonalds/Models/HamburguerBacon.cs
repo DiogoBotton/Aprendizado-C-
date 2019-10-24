@@ -26,5 +26,8 @@ namespace McBonalds.Models
         public override string RetornarNome(){
             return _Nome;
         }
+        public override void AdcQtd(int qtd){
+            this.Qtd += qtd;
+        }
     }
 }

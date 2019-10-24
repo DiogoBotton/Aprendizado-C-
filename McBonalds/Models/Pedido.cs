@@ -6,18 +6,22 @@ namespace McBonalds.Models {
         public double[] valorUnidades = new double[2]; //0 = hamburgueres, 1= shakes.
         public double totalPago;
 
+        public Pedido (Cliente Usuario) {
+            this.Usuario = Usuario;
+        }
+
         public void GerarPedido (List<Produto> prods) {
             //this.produtos.Add(prods);
-            foreach (var pedido in prods) {
-                foreach (Produto item in produtos) {//Para não adicionar objetos iguais na lista.
+            foreach (Produto pedido in prods) {
+                foreach (Produto item in produtos) { //Para não adicionar objetos iguais na lista.
                     if (item != pedido) {
                         this.produtos.Add (pedido);
                     }
-                    
+
                 }
             }
         }
-        public double CalcularPedido (Hamburguer hamburguer, double preco, int qtd) {
+        public double CalcularPedido (double preco, int qtd) {
             preco = preco * qtd;
 
             this.totalPago += preco;
@@ -26,16 +30,8 @@ namespace McBonalds.Models {
             //PROBLEMA: Há produtos com preços diferentes.
             return this.totalPago;
         }
-        public double CalcularPedido (Shake shake, double preco, int qtd) {
-            preco = preco * qtd;
-
-            this.totalPago += preco;
-            valorUnidades[1] += preco;
-
-            return this.totalPago;
-        }
-        public void FinalizarPedido(){
-            this.produtos.Clear();
+        public void FinalizarPedido () {
+            this.produtos.Clear ();
             this.valorUnidades[0] = 0;
             this.valorUnidades[1] = 0;
             this.totalPago = 0;

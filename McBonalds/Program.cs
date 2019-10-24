@@ -12,7 +12,7 @@ namespace McBonalds {
             List<Cliente> listClientes = new List<Cliente> () { new Cliente ("admin", "admin") };
             //TODO: Pergunta: o ADM pode estar na lista de CLIENTES??
             Queue<Pedido> pedidos = new Queue<Pedido> ();
-
+            
             int indexList = 0;
             bool querSair = false;
             bool fezLogin = false;
@@ -41,7 +41,9 @@ namespace McBonalds {
                                 #region Menu Cliente Logado.
 
                                 Cliente usuario = listClientes[indexList];
-                                Pedido pedidosUsuario = new Pedido ();
+                                Pedido pedidosUsuario = new Pedido (usuario);
+                                List<Pedido> listPedidoUsuario = new List<Pedido> ();
+                                List<Produto> listPedidoProdutos = new List<Produto> ();
 
                                 bool saiuDaConta = false;
                                 bool repetirProcesso = false;
@@ -70,17 +72,17 @@ namespace McBonalds {
                                                 } while (opcoesPedido < 1 || opcoesPedido > 2);
                                                 //TODO PERGUNTA: COMO IRÁ PEDIR MAIS DE UM PRODUTO POR PEDIDO?
                                                 //TODO: ACRESCENTAR + UM PEDIDO CASO CLIENTE DESEJAR MAIS ALGUM PRODUTO.
-                                                compraConcluida = FazerPedido (opcoesPedido, usuario, pedidosUsuario, out repetirProcesso);
+                                                compraConcluida = FazerPedido (opcoesPedido, usuario, pedidosUsuario, listPedidoProdutos, out repetirProcesso);
                                             } while (repetirProcesso);
 
                                             if (compraConcluida) {
                                                 Console.Clear ();
 
                                                 System.Console.WriteLine ("Sua compra foi realizada com sucesso!");
-                                                //TODO: Fazer lista de produtos comprados.
-                                                System.Console.WriteLine ($"Você comprou [numero] unidade(s) de [produto] por [R$ preço].");
+                                                ExibirPedido (pedidosUsuario);
                                                 System.Console.WriteLine ($"Seu novo saldo na carteira é: R$ {usuario.Carteira}.");
                                                 Console.ReadLine ();
+                                                listPedidoUsuario.Add (pedidosUsuario);
                                             } else {
                                                 Console.Clear ();
 
@@ -88,7 +90,14 @@ namespace McBonalds {
                                                 System.Console.WriteLine ($"Seu saldo na carteira: R$ {usuario.Carteira}.");
                                                 Console.ReadLine ();
                                             }
-
+                                            //TODO: ZERAR variavel QTD em todos os hamburgueres e shakes.
+                                            foreach (Produto item in listPedidoProdutos)
+                                            {
+                                                System.Console.WriteLine(item.GetType().Name);
+                                            }
+                                            Console.ReadLine();
+                                            
+                                            pedidosUsuario.FinalizarPedido ();
                                             break;
 
                                         case "2":
@@ -375,13 +384,49 @@ namespace McBonalds {
             }
             ShakeCount = shakes.Count;
         }
-        public static bool FazerPedido (int opcoesPedido, Cliente usuario, Pedido pedidosUsuario, out bool repetirProcesso) {
+        public static void ExibirPedido (Pedido pedidosUsuario) {
+            foreach (Produto item in pedidosUsuario.produtos) {
+                var produto = item;
+                if (item.Equals (typeof (HamburguerBacon))) {
+                    HamburguerBacon HB = (HamburguerBacon) produto;
+                    double preco = HB.Preco * HB.Qtd;
+                    System.Console.WriteLine ($"{HB.Nome} [{HB.Qtd}] R$ {preco} ");
+                } 
+                else if (item.Equals (typeof (HamburguerFurioso))) {
+                    HamburguerFurioso HF = (HamburguerFurioso) produto;
+                    double preco = HF.Preco * HF.Qtd;
+                    System.Console.WriteLine ($"{HF.Nome} [{HF.Qtd}] R$ {preco} ");
+                } 
+                else if (item.Equals (typeof (HamburguerVegano))) {
+                    HamburguerVegano HV = (HamburguerVegano) produto;
+                    double preco = HV.Preco * HV.Qtd;
+                    System.Console.WriteLine ($"{HV.Nome} [{HV.Qtd}] R$ {preco} ");
+                } 
+                else if (item.Equals (typeof (ShakeChocolate))) {
+                    ShakeChocolate SC = (ShakeChocolate) produto;
+                    double preco = SC.Preco * SC.Qtd;
+                    System.Console.WriteLine ($"{SC.Nome} [{SC.Qtd}] R$ {preco} ");
+                } 
+                else if (item.Equals (typeof (ShakeMorango))) {
+                    ShakeMorango SM = (ShakeMorango) produto;
+                    double preco = SM.Preco * SM.Qtd;
+                    System.Console.WriteLine ($"{SM.Nome} [{SM.Qtd}] R$ {preco} ");
+                } 
+                else if (item.Equals (typeof (ShakeNutella))) {
+                    ShakeNutella SN = (ShakeNutella) produto;
+                    double preco = SN.Preco * SN.Qtd;
+                    System.Console.WriteLine ($"{SN.Nome} [{SN.Qtd}] R$ {preco} ");
+                }
+                System.Console.WriteLine($"Total Pago: R$ {pedidosUsuario.totalPago}.");
+            }
+
+        }
+        public static bool FazerPedido (int opcoesPedido, Cliente usuario, Pedido pedidosUsuario, List<Produto> listPedidoProdutos, out bool repetirProcesso) {
             bool compraConcluida = false;
             bool finalizarAcao = false;
             repetirProcesso = false;
             double precoTotal = 0;
 
-            List<Produto> listPedidoProdutos = new List<Produto> ();
             do {
 
                 switch (opcoesPedido) {
@@ -401,7 +446,7 @@ namespace McBonalds {
 
                             }
                         } while (codigoH <= 0 || codigoH > HamburguerCount);
-                        
+
                         int qtdH = 0;
                         do {
 
@@ -414,25 +459,26 @@ namespace McBonalds {
                         } while (qtdH < 1);
 
                         var hbg = Produto.listHamburgueres[codigoH];
-                        
+
                         System.Console.WriteLine ("Deseja mais alguma coisa? Responda s / n");
                         string maisPedidosH = Console.ReadLine ();
 
                         switch (maisPedidosH) {
                             case "s":
-                                precoTotal = pedidosUsuario.CalcularPedido (hbg, hbg.RetornarPreco (), qtdH);
-                                //pedidosUsuario.GerarPedido (hbg);
+                                hbg.AdcQtd (qtdH);
                                 listPedidoProdutos.Add (hbg);
-                        
+
+                                precoTotal = pedidosUsuario.CalcularPedido (hbg.RetornarPreco (), qtdH);
+
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                precoTotal = pedidosUsuario.CalcularPedido (hbg, hbg.RetornarPreco (), qtdH);
-                                //pedidosUsuario.GerarPedido (hbg);
+                                hbg.AdcQtd (qtdH);
                                 listPedidoProdutos.Add (hbg);
 
-                                //TODO: finalizar pedido aqui
+                                precoTotal = pedidosUsuario.CalcularPedido (hbg.RetornarPreco (), qtdH);
+
                                 compraConcluida = usuario.ComprarProduto (precoTotal);
                                 if (compraConcluida) {
                                     pedidosUsuario.GerarPedido (listPedidoProdutos);
@@ -481,26 +527,26 @@ namespace McBonalds {
 
                         switch (maisPedidosSHK) {
                             case "s":
-                                precoTotal = pedidosUsuario.CalcularPedido (shk, shk.RetornarPreco (), qtdS);
-                                //pedidosUsuario.GerarPedido (shk);
+                                shk.AdcQtd (qtdS);
                                 listPedidoProdutos.Add (shk);
+
+                                precoTotal = pedidosUsuario.CalcularPedido (shk.RetornarPreco (), qtdS);
 
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                precoTotal = pedidosUsuario.CalcularPedido (shk, shk.RetornarPreco (), qtdS);
-                                //pedidosUsuario.GerarPedido (shk);
+                                shk.AdcQtd (qtdS);
                                 listPedidoProdutos.Add (shk);
 
-                                //TODO: finalizar pedido aqui
+                                precoTotal = pedidosUsuario.CalcularPedido (shk.RetornarPreco (), qtdS);
+
                                 compraConcluida = usuario.ComprarProduto (precoTotal);
                                 if (compraConcluida) {
                                     pedidosUsuario.GerarPedido (listPedidoProdutos);
-                                    listPedidoProdutos.Clear();
-                                }
-                                else{
-                                    listPedidoProdutos.Clear();
+                                    listPedidoProdutos.Clear ();
+                                } else {
+                                    listPedidoProdutos.Clear ();
                                 }
 
                                 finalizarAcao = true;
@@ -517,7 +563,6 @@ namespace McBonalds {
 
                 }
             } while (!finalizarAcao);
-
             return compraConcluida;
         }
 

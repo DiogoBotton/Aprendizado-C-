@@ -4,6 +4,7 @@ namespace McBonalds.Models
     {
         private string _Nome;
         private double _Preco;
+        public int Qtd;
 
         public string Nome{
             get {return _Nome;}
@@ -25,6 +26,9 @@ namespace McBonalds.Models
         }
         public override string RetornarNome(){
             return _Nome;
+        }
+        public override void AdcQtd(int qtd){
+            this.Qtd += qtd;
         }
     }
 }
