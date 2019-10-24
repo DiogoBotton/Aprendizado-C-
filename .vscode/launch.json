@@ -9,10 +9,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Calculadora/bin/Debug/netcoreapp2.2/Hello.dll",
+            "program": "${workspaceFolder}/McBonalds/bin/Debug/netcoreapp2.2/McBonalds.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Calculadora",
-            "console": "internalConsole",
+            "cwd": "${workspaceFolder}/McBonalds",
+            "console": "externalTerminal",
             "stopAtEntry": false
         },
         {
