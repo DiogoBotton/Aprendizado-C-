@@ -16,9 +16,6 @@ namespace McBonalds.Models {
         public void AdicionarProduto (Produto produto, int qtd) {
             var pdt = produto.GetType ().Name;
 
-            foreach (Produto item in produtos) {
-                var produtoLista = item.GetType ().Name;
-
                 if (produto.Equals (typeof (HamburguerBacon))) {
                     HamburguerBacon HB = (HamburguerBacon) produto;
                     HB.AdcQtd (qtd);
@@ -48,7 +45,7 @@ namespace McBonalds.Models {
                 
                     //Como atualizar a QTD de um produto da lista caso forem iguais
                 
-            }
+            
 
         }
         public double CalcularPedido () {

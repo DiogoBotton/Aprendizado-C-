@@ -21,7 +21,7 @@ namespace AgendaAniversarios {
                 System.Console.WriteLine ("0 - Sair do programa.");
                 System.Console.WriteLine ("_________________________________");
                 opcao = Console.ReadLine ();
-
+                
                 switch (opcao) {
                     case "1":
                         Cadastrar(agenda);

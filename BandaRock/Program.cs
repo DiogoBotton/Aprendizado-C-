@@ -69,6 +69,9 @@ namespace BandaRock {
                     case ConsoleKey.Enter:
                         //formacaoEscolhida = true;
                         break;
+                        case ConsoleKey.NumPad0:
+                        System.Console.WriteLine(0);
+                        break;
                 }
                 
             } while (!querSair);
