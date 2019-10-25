@@ -10,37 +10,75 @@ namespace McBonalds.Models {
 
         public Pedido (Cliente Usuario) {
             this.Usuario = Usuario;
+            this.totalPago = 0;
         }
 
-        public void GerarPedido (List<Produto> prods) {
-            //this.produtos.Add(prods);
-            var pdt = prods.GetType ().Name;
-            foreach (Produto item in produtos) { //Para não adicionar objetos iguais na lista.
+        public void AdicionarProduto (Produto produto, int qtd) {
+            var pdt = produto.GetType ().Name;
+
+            foreach (Produto item in produtos) {
                 var produtoLista = item.GetType ().Name;
-                if (produtoLista != pdt) {
 
-                    foreach (Produto produto in prods) {
-                        this.produtos.Add (produto);
-                    }
+                if (produto.Equals (typeof (HamburguerBacon))) {
+                    HamburguerBacon HB = (HamburguerBacon) produto;
+                    HB.AdcQtd (qtd);
+                    this.produtos.Add (produto);
+                } else if (produto.Equals (typeof (HamburguerFurioso))) {
+                    HamburguerFurioso HF = (HamburguerFurioso) produto;
+                    HF.AdcQtd (qtd);
+                    this.produtos.Add (produto);
+                } else if (produto.Equals (typeof (HamburguerVegano))) {
+                    HamburguerVegano HV = (HamburguerVegano) produto;
+                    HV.AdcQtd (qtd);
+                    this.produtos.Add (produto);
+                } else if (produto.Equals (typeof (ShakeChocolate))) {
+                    ShakeChocolate SC = (ShakeChocolate) produto;
+                    SC.AdcQtd (qtd);
+                    this.produtos.Add (produto);
+                } else if (produto.Equals (typeof (ShakeMorango))) {
+                    ShakeMorango SM = (ShakeMorango) produto;
+                    SM.AdcQtd (qtd);
+                    this.produtos.Add (produto);
+                } else if (produto.Equals (typeof (ShakeNutella))) {
+                    ShakeNutella SN = (ShakeNutella) produto;
+                    SN.AdcQtd (qtd);
+                    this.produtos.Add (produto);
                 }
-
+                    
+                
+                    //Como atualizar a QTD de um produto da lista caso forem iguais
+                
             }
 
         }
-        public double CalcularPedido (double preco, int qtd) {
-            preco = preco * qtd;
+        public double CalcularPedido () {
+            foreach (Produto item in produtos) {
+                var produtoLista = item.GetType ().Name;
 
-            this.totalPago += preco;
+                if (item.Equals (typeof (HamburguerBacon))) {
+                    HamburguerBacon HB = (HamburguerBacon) item;
+                    this.totalPago += HB.Qtd * HB.Preco;
+                } else if (item.Equals (typeof (HamburguerFurioso))) {
+                    HamburguerFurioso HF = (HamburguerFurioso) item;
+                    this.totalPago += HF.Qtd * HF.Preco;
+                } else if (item.Equals (typeof (HamburguerVegano))) {
+                    HamburguerVegano HV = (HamburguerVegano) item;
+                    this.totalPago += HV.Qtd * HV.Preco;
+                } else if (item.Equals (typeof (ShakeChocolate))) {
+                    ShakeChocolate SC = (ShakeChocolate) item;
+                    this.totalPago += SC.Qtd * SC.Preco;
+                } else if (item.Equals (typeof (ShakeMorango))) {
+                    ShakeMorango SM = (ShakeMorango) item;
+                    this.totalPago += SM.Qtd * SM.Preco;
+                } else if (item.Equals (typeof (ShakeNutella))) {
+                    ShakeNutella SN = (ShakeNutella) item;
+                    this.totalPago += SN.Qtd * SN.Preco;
+                }
+            }
             return this.totalPago;
-
-            //valorUnidades[0] += preco;
-            //Para saber quantas unidades comprou: DIVIDIR valorUnidades pelo preço da UNIDADE do produto.
-            //PROBLEMA: Há produtos com preços diferentes.
         }
         public void FinalizarPedido () {
             this.produtos.Clear ();
-            this.valorUnidades[0] = 0;
-            this.valorUnidades[1] = 0;
             this.totalPago = 0;
         }
         //TODO: cancelar pedido

@@ -416,7 +416,7 @@ namespace McBonalds {
             bool finalizarAcao = false;
             repetirProcesso = false;
             double precoTotal = 0;
-            List<Produto> listPedidoProdutos = new List<Produto> ();
+            //List<Produto> listPedidoProdutos = new List<Produto> ();
             do {
 
                 switch (opcoesPedido) {
@@ -455,32 +455,17 @@ namespace McBonalds {
 
                         switch (maisPedidosH) {
                             case "s":
-                                var nomeProduto = hbg.GetType ().Name;
-                                foreach (Produto item in listPedidoProdutos) {
-                                    if (nomeProduto == item.GetType ().Name) {
-                                        int index = listPedidoProdutos.IndexOf (hbg);
-                                    } else {
-                                        listPedidoProdutos.Add (hbg);
-                                        hbg.AdcQtd (qtdH);
-                                    }
-
-                                }
-
-                                precoTotal = pedidosUsuario.CalcularPedido (hbg.RetornarPreco (), qtdH);
+                                pedidosUsuario.AdicionarProduto(hbg, qtdH);
 
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                hbg.AdcQtd (qtdH);
-                                listPedidoProdutos.Add (hbg);
+                                pedidosUsuario.AdicionarProduto(hbg, qtdH);
 
-                                precoTotal = pedidosUsuario.CalcularPedido (hbg.RetornarPreco (), qtdH);
+                                precoTotal = pedidosUsuario.CalcularPedido ();
 
                                 compraConcluida = usuario.ComprarProduto (precoTotal);
-                                if (compraConcluida) {
-                                    pedidosUsuario.GerarPedido (listPedidoProdutos);
-                                }
 
                                 finalizarAcao = true;
                                 repetirProcesso = false;
@@ -525,27 +510,17 @@ namespace McBonalds {
 
                         switch (maisPedidosSHK) {
                             case "s":
-                                shk.AdcQtd (qtdS);
-                                listPedidoProdutos.Add (shk);
-
-                                precoTotal = pedidosUsuario.CalcularPedido (shk.RetornarPreco (), qtdS);
+                                pedidosUsuario.AdicionarProduto(shk, qtdS);
 
                                 finalizarAcao = true;
                                 repetirProcesso = true;
                                 continue;
                             case "n":
-                                shk.AdcQtd (qtdS);
-                                listPedidoProdutos.Add (shk);
+                                pedidosUsuario.AdicionarProduto(shk, qtdS);
 
-                                precoTotal = pedidosUsuario.CalcularPedido (shk.RetornarPreco (), qtdS);
+                                precoTotal = pedidosUsuario.CalcularPedido ();
 
                                 compraConcluida = usuario.ComprarProduto (precoTotal);
-                                if (compraConcluida) {
-                                    pedidosUsuario.GerarPedido (listPedidoProdutos);
-                                    listPedidoProdutos.Clear ();
-                                } else {
-                                    listPedidoProdutos.Clear ();
-                                }
 
                                 finalizarAcao = true;
                                 repetirProcesso = false;
