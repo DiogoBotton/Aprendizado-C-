@@ -109,6 +109,11 @@ namespace ZooLogico {
                     Console.ReadLine ();
                 }
             }
+            else if (tipoAnimal.Equals(typeof(IQuionofilo))){
+                IQuionofilo frio = (IQuionofilo) animal;
+
+                
+            }
             //TODO: Fazer aquatico, branquiado, quionofilo, arboricula.
 
         }

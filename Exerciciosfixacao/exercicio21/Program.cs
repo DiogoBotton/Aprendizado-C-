@@ -51,16 +51,6 @@ namespace exercicio21
                 }
                 
             }while(somaValor != 0);
-
-            System.Console.WriteLine("|_____Seu dinheiro_____|");
-            System.Console.WriteLine($"{count100} notas de 100;");
-            System.Console.WriteLine($"{count50} notas de 50;");
-            System.Console.WriteLine($"{count20} notas de 20;");
-            System.Console.WriteLine($"{count10} notas de 10;");
-            System.Console.WriteLine($"{count5} notas de 5;");
-            System.Console.WriteLine($"{count2} notas de 2;");
-            System.Console.WriteLine($"{countMoeda1} moedas de 1;");
-            System.Console.WriteLine("|______________________|");
         }
     }
 }

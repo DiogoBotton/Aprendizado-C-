@@ -28,7 +28,7 @@ namespace exerciciosMatriz
 
             // 2°
 
-            /*int[] sorteio = new int[10];
+            int[] sorteio = new int[10];
             int cont = 0;
             
 
@@ -52,7 +52,7 @@ namespace exerciciosMatriz
                 if ((sorteio[i] % 2) == 1){
                 System.Console.Write(sorteio[i] + " ");
                 }
-            }*/
+            }
 
             // 3º
 

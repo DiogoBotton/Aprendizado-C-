@@ -86,7 +86,7 @@ namespace AgendaTelefonica {
             System.Console.Write ("Entre com o telefone da pessoa: ");
             tel = ValidacaoKeyTel (tel);
 
-            System.Console.WriteLine();
+            System.Console.WriteLine ();
 
             string data = "";
             System.Console.Write ("Entre com a data de nascimento: ");
@@ -96,7 +96,7 @@ namespace AgendaTelefonica {
 
             listRegistros.Add (registro);
 
-            System.Console.WriteLine();
+            System.Console.WriteLine ();
 
             System.Console.WriteLine ("Cadastrado com sucesso!");
             Console.ReadLine ();
@@ -126,24 +126,35 @@ namespace AgendaTelefonica {
 
             }
 
-        }
+        } //VSauce
         public static void BuscaEspecifica (List<Registro> listRegistros) {
             Console.Clear ();
             System.Console.Write ("Digite o nome ou a data de nascimento da pessoa: ");
             string nomeOUdata = Console.ReadLine ();
+
+            bool nomeExiste = false;
             if (listRegistros.Count != 0) {
+                int index = 0;
                 foreach (Registro item in listRegistros) {
                     if (item.Nome == nomeOUdata || item.Aniversario == nomeOUdata) {
+                        nomeExiste = true;
 
-                        System.Console.WriteLine ($"Nome: {item.Nome}");
-                        System.Console.WriteLine ($"Data de nascimento: {item.Aniversario}");
-                        System.Console.WriteLine ($"Telefone: {item.Telefone}");
-                        Console.ReadLine ();
                         break;
                     } else {
-                        System.Console.WriteLine ("Este nome não consta nos registros.");
-                        Console.ReadLine ();
+                        nomeExiste = false;
                     }
+                    index++;
+                }
+
+                if (nomeExiste) {
+                    var registro = listRegistros[index];
+                    System.Console.WriteLine ($"Nome: {registro.Nome}");
+                    System.Console.WriteLine ($"Data de nascimento: {registro.Aniversario}");
+                    System.Console.WriteLine ($"Telefone: {registro.Telefone}");
+                    Console.ReadLine ();
+                } else {
+                    System.Console.WriteLine ("Este nome não consta nos registros.");
+                    Console.ReadLine ();
                 }
             } else {
                 System.Console.WriteLine ("Não há registros na Agenda.");
@@ -161,10 +172,10 @@ namespace AgendaTelefonica {
                     System.Console.WriteLine ($"Registro ID {count}: {item.Nome}");
                     System.Console.WriteLine ($"    Nascimento: {item.Aniversario}");
                     System.Console.WriteLine ($"    Telefone: {item.Telefone}");
-                    Console.ReadLine ();
-
                     count++;
                 }
+                Console.ReadLine();
+                
             } else {
                 System.Console.WriteLine ("Não há registros na Agenda.");
                 Console.ReadLine ();
@@ -425,7 +436,7 @@ namespace AgendaTelefonica {
                             continue;
                         }
                         data += "5";
-                        System.Console.Write("Entre com a data de nascimento: " + data);
+                        System.Console.Write ("Entre com a data de nascimento: " + data);
                         break;
 
                     case ConsoleKey.D6:
