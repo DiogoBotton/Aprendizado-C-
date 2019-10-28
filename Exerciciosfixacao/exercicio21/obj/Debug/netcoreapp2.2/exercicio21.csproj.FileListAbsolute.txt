@@ -1,0 +1,11 @@
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.csprojAssemblyReference.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.csproj.CoreCompileInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.AssemblyInfoInputs.cache
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.AssemblyInfo.cs
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\bin\Debug\netcoreapp2.2\exercicio21.deps.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\bin\Debug\netcoreapp2.2\exercicio21.runtimeconfig.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\bin\Debug\netcoreapp2.2\exercicio21.runtimeconfig.dev.json
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\bin\Debug\netcoreapp2.2\exercicio21.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\bin\Debug\netcoreapp2.2\exercicio21.pdb
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.dll
+C:\Users\Diogo\Documents\Aprendizado C#\Aprendizado-C-\exerciciosfixacao\exercicio21\obj\Debug\netcoreapp2.2\exercicio21.pdb

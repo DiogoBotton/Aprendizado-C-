@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/McBonalds/bin/Debug/netcoreapp2.2/McBonalds.dll",
+            "program": "${workspaceFolder}/ZooLogico/bin/Debug/netcoreapp2.2/ZooLogico.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/McBonalds",
+            "cwd": "${workspaceFolder}/ZooLogico",
             "console": "externalTerminal",
             "stopAtEntry": false
         },
