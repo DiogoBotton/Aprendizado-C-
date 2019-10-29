@@ -26,7 +26,7 @@ namespace AgendaTelefonica {
 
                 switch (opcao) {
                     case "1":
-                        //TODO: Fazer validação de digitação com ConsoleKey.
+                        //FEITO: Fazer validação de digitação com ConsoleKey.
                         Cadastro (listRegistros);
 
                         break;
@@ -107,18 +107,24 @@ namespace AgendaTelefonica {
 
             System.Console.WriteLine ("Digite o NOME da pessoa que deseja remover: ");
             string nome = Console.ReadLine ();
+
+            bool nomeExiste = false;
             if (listRegistros.Count != 0) {
                 foreach (Registro item in listRegistros) {
                     if (item.Nome == nome) {
-
                         listRegistros.Remove (item);
-                        System.Console.WriteLine ($"Registro com identificação [{nome}] foi removido.");
-                        Console.ReadLine ();
+                        nomeExiste = true;
                         break;
                     } else {
-                        System.Console.WriteLine ("Este nome não existe no registro.");
-                        Console.ReadLine ();
+                        nomeExiste = false;
                     }
+                }
+                if (nomeExiste) {
+                    System.Console.WriteLine ($"Registro com identificação [{nome}] foi removido.");
+                    Console.ReadLine ();
+                } else {
+                    System.Console.WriteLine ("Este nome não existe no registro.");
+                    Console.ReadLine ();
                 }
             } else {
                 System.Console.WriteLine ("Não há registros na Agenda.");
@@ -174,8 +180,8 @@ namespace AgendaTelefonica {
                     System.Console.WriteLine ($"    Telefone: {item.Telefone}");
                     count++;
                 }
-                Console.ReadLine();
-                
+                Console.ReadLine ();
+
             } else {
                 System.Console.WriteLine ("Não há registros na Agenda.");
                 Console.ReadLine ();

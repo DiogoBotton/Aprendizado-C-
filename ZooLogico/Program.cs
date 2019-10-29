@@ -38,12 +38,11 @@ namespace ZooLogico {
                 if (ListaAnimais.animais.ContainsKey (codigo)) {
                     ColocarAnimalHabitat (ListaAnimais.animais[codigo], pasto, gaiola, aquario, aquarioGelado, casaArvore, cavernaPedra, piscina);
                 } else {
-                    if(codigo == 0){
+                    if (codigo == 0) {
                         querSair = true;
-                    }
-                    else{
-                    System.Console.WriteLine ($"O código {codigo} não existe na lista de animais.");
-                    Console.ReadLine ();
+                    } else {
+                        System.Console.WriteLine ($"O código {codigo} não existe na lista de animais.");
+                        Console.ReadLine ();
                     }
                 }
 
@@ -96,25 +95,48 @@ namespace ZooLogico {
             } else if (tipoAnimal.Equals (typeof (ITerrestre))) {
                 ITerrestre terrestre = (ITerrestre) animal;
 
-                colocouNoHabitat  = pasto.ColocarAnimalPasto(animal);
-                if(colocouNoHabitat){
-                    System.Console.WriteLine (terrestre.Andar() + " anda, então deve ficar no habitat Pasto.");
+                colocouNoHabitat = pasto.ColocarAnimalPasto (animal);
+                if (colocouNoHabitat) {
+                    System.Console.WriteLine (terrestre.Andar () + " anda, então deve ficar no habitat Pasto.");
                     System.Console.WriteLine ($"Foi possível alocar {terrestre.Andar()} no habitat.");
                     System.Console.WriteLine ($"Vagas restantes: {pasto.capacidadeAtual}");
                     Console.ReadLine ();
-                }
-                else{
+                } else {
                     System.Console.WriteLine ($"Não foi possível alocar {terrestre.Andar()} no Pasto.");
                     System.Console.WriteLine ("O habitat atingiu sua capacidade máxima.");
                     Console.ReadLine ();
                 }
-            }
-            else if (tipoAnimal.Equals(typeof(IQuionofilo))){
+            } else if (tipoAnimal.Equals (typeof (IQuionofilo))) {
                 IQuionofilo frio = (IQuionofilo) animal;
+                colocouNoHabitat = aquarioGelado.ColocarAnimalAquarioGelado (animal);
 
-                
+                if (colocouNoHabitat) {
+                    System.Console.WriteLine (frio.ResistirAoFrio () + " resiste ao frio, então deve ficar no habitat Aquário Gelado.");
+                    System.Console.WriteLine ($"Foi possível alocar {frio.ResistirAoFrio()} no habitat.");
+                    System.Console.WriteLine ($"Vagas restantes: {aquarioGelado.capacidadeAtual}");
+                    Console.ReadLine ();
+                } else {
+                    System.Console.WriteLine ($"Não foi possível alocar {frio.ResistirAoFrio()} no Aquário Gelado.");
+                    System.Console.WriteLine ("O habitat atingiu sua capacidade máxima.");
+                    Console.ReadLine ();
+                }
             }
-            //TODO: Fazer aquatico, branquiado, quionofilo, arboricula.
+            else if (tipoAnimal.Equals (typeof (IArboricula))) {
+                IArboricula macaquitos = (IArboricula) animal;
+                colocouNoHabitat = casaArvore.ColocarAnimalCasaArvore(animal);
+
+                if (colocouNoHabitat) {
+                    System.Console.WriteLine (macaquitos.EscalarArvores() + " escala árvores, então deve ficar no habitat Casa de Árvores.");
+                    System.Console.WriteLine ($"Foi possível alocar {macaquitos.EscalarArvores()} no habitat.");
+                    System.Console.WriteLine ($"Vagas restantes: {casaArvore.capacidadeAtual}");
+                    Console.ReadLine ();
+                } else {
+                    System.Console.WriteLine ($"Não foi possível alocar {macaquitos.EscalarArvores()} na Casa de Árvores.");
+                    System.Console.WriteLine ("O habitat atingiu sua capacidade máxima.");
+                    Console.ReadLine ();
+                }
+            }
+            //TODO: Fazer aquatico, branquiado, arboricula.
 
         }
     }
