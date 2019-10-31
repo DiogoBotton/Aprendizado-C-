@@ -51,9 +51,21 @@ namespace AgendaAniversarios {
         }
         public static void Cadastrar (Dictionary<string, DateTime> agenda) {
             Console.Clear ();
-
+            bool nomeJaExiste = false;
+            string nome = "";
+            do{
+                Console.Clear();
+                
             System.Console.Write ("Entre com o nome do aniversariante: ");
-            string nome = Console.ReadLine ();
+            nome = Console.ReadLine ();
+            nomeJaExiste = agenda.ContainsKey(nome);
+                if(nomeJaExiste){
+                    System.Console.WriteLine("Este nome já existe.");
+                    Console.ReadLine();
+                    
+                }
+            }while(nomeJaExiste);
+
             System.Console.Write ("Entre com a data de aniversário: ");
             DateTime niver = Convert.ToDateTime (Console.ReadLine ());
 

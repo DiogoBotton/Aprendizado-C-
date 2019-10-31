@@ -26,7 +26,7 @@ namespace ZooLogico {
             CavernaPedra cavernaPedra = new CavernaPedra ();
             Piscina piscina = new Piscina ();
 
-            //Habitat habitat = new Habitat();
+            Habitat habitat = new Habitat();
 
             bool querSair = false;
             int codigo = 0;
@@ -36,7 +36,7 @@ namespace ZooLogico {
                 codigo = ListarAnimais ();
 
                 if (ListaAnimais.animais.ContainsKey (codigo)) {
-                    ColocarAnimalHabitat (ListaAnimais.animais[codigo], pasto, gaiola, aquario, aquarioGelado, casaArvore, cavernaPedra, piscina);
+                    ColocarAnimalHabitat (ListaAnimais.animais[codigo], habitat, pasto, gaiola, aquario, aquarioGelado, casaArvore, cavernaPedra, piscina);
                 } else {
                     if (codigo == 0) {
                         querSair = true;
@@ -70,23 +70,22 @@ namespace ZooLogico {
             return codigo;
 
         }
-        public static void ColocarAnimalHabitat (Animal animal, Pasto pasto, Gaiola gaiola, Aquario aquario, AquarioGelado aquarioGelado, CasaArvore casaArvore, CavernaPedra cavernaPedra, Piscina piscina) {
+        public static void ColocarAnimalHabitat (Animal animal, Habitat habitat, Pasto pasto, Gaiola gaiola, Aquario aquario, AquarioGelado aquarioGelado, CasaArvore casaArvore, CavernaPedra cavernaPedra, Piscina piscina) {
             Type[] tipoAnimal = animal.GetType ().GetInterfaces ();
             bool AnimalPrecisaSerSeparado = false;
             bool colocouNoHabitat = false;
 
             //Caso houver mais de uma interface por animal, fazer um vetor de type (Type[]);
             //Um Foreach para iterar no vetor de Type[].
-
+            //I.Equals(typeof(IBranquiado))
+            //A cada vez que aloca mais um animal, declara um novo objeto (habitat)
             //Validação para saber se o animal precisa ser separado dos demais ou não.
-            foreach (Type I in tipoAnimal) {
-                if (I.Equals(typeof(IBranquiado))) {
-                    AnimalPrecisaSerSeparado = true;
-                    break;
-                } else {
-                    AnimalPrecisaSerSeparado = false;
-                }
+            if (tipoAnimal.Contains (typeof (IBranquiado))) {
+                AnimalPrecisaSerSeparado = true;
+            } else {
+                AnimalPrecisaSerSeparado = false;
             }
+            
 
             if (AnimalPrecisaSerSeparado) {
                 foreach (Type intFace in tipoAnimal) {
@@ -94,7 +93,10 @@ namespace ZooLogico {
                     if (intFace.Equals (typeof (IBranquiado))) {
                         IBranquiado branquiado = (IBranquiado) animal;
                         IAquatico aquatico = (IAquatico) animal;
-                        colocouNoHabitat = aquario.ColocarAnimalAquario(animal);
+                        
+                        //Aquario aqualio = (Aquario) habitat;
+                        
+                        colocouNoHabitat = aquario.ColocarAnimalAquario (animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (aquatico.Nadar () + " sabe nadar e" + branquiado.RespirarBaixoDAgua () + ", então deve ficar no habitat Aquário.");
@@ -183,7 +185,7 @@ namespace ZooLogico {
                         }
                     } else if (intFace.Equals (typeof (IAquatico))) {
                         IAquatico aquatico = (IAquatico) animal;
-                        colocouNoHabitat = piscina.ColocarAnimalPiscina(animal);
+                        colocouNoHabitat = piscina.ColocarAnimalPiscina (animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (aquatico.Nadar () + " sabe nadar, então deve ficar no habitat Piscina.");
@@ -198,7 +200,7 @@ namespace ZooLogico {
                     }
                 }
             }
-            
+
         }
     }
 }
