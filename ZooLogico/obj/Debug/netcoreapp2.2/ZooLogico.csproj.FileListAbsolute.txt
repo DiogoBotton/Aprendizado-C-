@@ -15,7 +15,6 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoolo
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\bin\Debug\netcoreapp2.2\ZooLogico.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\bin\Debug\netcoreapp2.2\ZooLogico.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\obj\Debug\netcoreapp2.2\ZooLogico.csprojAssemblyReference.cache
-C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\obj\Debug\netcoreapp2.2\ZooLogico.csproj.CoreCompileInputs.cache
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\obj\Debug\netcoreapp2.2\ZooLogico.AssemblyInfoInputs.cache
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\obj\Debug\netcoreapp2.2\ZooLogico.AssemblyInfo.cs
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\zoologico\obj\Debug\netcoreapp2.2\ZooLogico.dll

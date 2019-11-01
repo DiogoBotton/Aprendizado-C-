@@ -110,11 +110,17 @@ namespace AgendaAniversarios {
         public static void ListarAniversarios (Dictionary<string, DateTime>  agenda) {
             Console.Clear ();
 
-            foreach (string item in agenda.Keys) {
-                System.Console.Write ("Nome: " + item);
-                DateTime data = agenda[item];
-                System.Console.WriteLine ("       Data: " + data);
+            foreach (var item in agenda)
+            {
+                System.Console.Write("Chave: " + item.Key + " || ");
+                System.Console.WriteLine("Valor: " + item.Value);
             }
+
+            //foreach (string item in agenda.Keys) {
+            //    System.Console.Write ("Nome: " + item);
+            //    DateTime data = agenda[item];
+            //    System.Console.WriteLine ("       Data: " + data);
+            //}
 
             Console.ReadLine ();
         }

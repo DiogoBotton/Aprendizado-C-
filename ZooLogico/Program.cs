@@ -18,15 +18,7 @@ namespace ZooLogico {
     }
     class Program {
         static void Main (string[] args) {
-            Pasto pasto = new Pasto ();
-            Gaiola gaiola = new Gaiola ();
-            Aquario aquario = new Aquario ();
-            AquarioGelado aquarioGelado = new AquarioGelado ();
-            CasaArvore casaArvore = new CasaArvore ();
-            CavernaPedra cavernaPedra = new CavernaPedra ();
-            Piscina piscina = new Piscina ();
-
-            Habitat habitat = new Habitat();
+            Zoologico zoo = new Zoologico();
 
             bool querSair = false;
             int codigo = 0;
@@ -36,7 +28,7 @@ namespace ZooLogico {
                 codigo = ListarAnimais ();
 
                 if (ListaAnimais.animais.ContainsKey (codigo)) {
-                    ColocarAnimalHabitat (ListaAnimais.animais[codigo], habitat, pasto, gaiola, aquario, aquarioGelado, casaArvore, cavernaPedra, piscina);
+                    ColocarAnimalHabitat (ListaAnimais.animais[codigo], zoo);
                 } else {
                     if (codigo == 0) {
                         querSair = true;
@@ -70,22 +62,18 @@ namespace ZooLogico {
             return codigo;
 
         }
-        public static void ColocarAnimalHabitat (Animal animal, Habitat habitat, Pasto pasto, Gaiola gaiola, Aquario aquario, AquarioGelado aquarioGelado, CasaArvore casaArvore, CavernaPedra cavernaPedra, Piscina piscina) {
+        public static void ColocarAnimalHabitat (Animal animal, Zoologico zoo) {
             Type[] tipoAnimal = animal.GetType ().GetInterfaces ();
             bool AnimalPrecisaSerSeparado = false;
             bool colocouNoHabitat = false;
 
-            //Caso houver mais de uma interface por animal, fazer um vetor de type (Type[]);
-            //Um Foreach para iterar no vetor de Type[].
-            //I.Equals(typeof(IBranquiado))
-            //A cada vez que aloca mais um animal, declara um novo objeto (habitat)
             //Validação para saber se o animal precisa ser separado dos demais ou não.
             if (tipoAnimal.Contains (typeof (IBranquiado))) {
                 AnimalPrecisaSerSeparado = true;
             } else {
                 AnimalPrecisaSerSeparado = false;
             }
-            
+
 
             if (AnimalPrecisaSerSeparado) {
                 foreach (Type intFace in tipoAnimal) {
@@ -94,14 +82,14 @@ namespace ZooLogico {
                         IBranquiado branquiado = (IBranquiado) animal;
                         IAquatico aquatico = (IAquatico) animal;
                         
-                        //Aquario aqualio = (Aquario) habitat;
+                        colocouNoHabitat = zoo.aquario.AlocarAnimal(animal);
                         
-                        colocouNoHabitat = aquario.ColocarAnimalAquario (animal);
+                        //colocouNoHabitat = aquario.ColocarAnimalAquario (animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (aquatico.Nadar () + " sabe nadar e" + branquiado.RespirarBaixoDAgua () + ", então deve ficar no habitat Aquário.");
                             System.Console.WriteLine ($"Foi possível alocar {aquatico.Nadar()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {aquario.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.aquario.capacidadeAtual}");
                             Console.ReadLine ();
                         } else {
                             System.Console.WriteLine ($"Não foi possível alocar {aquatico.Nadar()} no Aquário.");
@@ -116,12 +104,12 @@ namespace ZooLogico {
                     if (intFace.Equals (typeof (IVoador))) {
                         IVoador voador = (IVoador) animal;
 
-                        colocouNoHabitat = gaiola.ColocarAnimalGaiola (animal);
+                        colocouNoHabitat = zoo.gaiola.AlocarAnimal(animal);
                         if (colocouNoHabitat) {
 
                             System.Console.WriteLine (voador.Voar () + " voa, então deve ficar no habitat Gaiola.");
                             System.Console.WriteLine ($"Foi possível alocar {voador.Voar()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {gaiola.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.gaiola.capacidadeAtual}");
                             Console.ReadLine ();
 
                             //TODO: Fazer método de listagem de animais em cada Habitat.
@@ -135,34 +123,34 @@ namespace ZooLogico {
                     } else if (intFace.Equals (typeof (ITerrestre))) {
                         ITerrestre terrestre = (ITerrestre) animal;
 
-                        colocouNoHabitat = pasto.ColocarAnimalPasto (animal);
+                        colocouNoHabitat = zoo.pasto.AlocarAnimal(animal);
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (terrestre.Andar () + " anda, então deve ficar no habitat Pasto.");
                             System.Console.WriteLine ($"Foi possível alocar {terrestre.Andar()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {pasto.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.pasto.capacidadeAtual}");
                             Console.ReadLine ();
                         } else {
-                            colocouNoHabitat = cavernaPedra.ColocarAnimalCavernaPedra (animal);
+                            colocouNoHabitat = zoo.cavernaPedra.AlocarAnimal(animal);
                             if (colocouNoHabitat) {
                                 System.Console.WriteLine (terrestre.Andar () + " anda, então deve ficar no habitat Caverna de Pedra.");
                                 System.Console.WriteLine ($"Foi possível alocar {terrestre.Andar()} no habitat.");
-                                System.Console.WriteLine ($"Vagas restantes: {cavernaPedra.capacidadeAtual}");
+                                System.Console.WriteLine ($"Vagas restantes: {zoo.cavernaPedra.capacidadeAtual}");
                                 Console.ReadLine ();
                             } else {
 
                                 System.Console.WriteLine ($"Não foi possível alocar {terrestre.Andar()} nos habitats Pasto e Caverna de Pedra.");
-                                System.Console.WriteLine ("O habitat atingiu sua capacidade máxima.");
+                                System.Console.WriteLine ("Os habitats atingiu sua capacidade máxima.");
                                 Console.ReadLine ();
                             }
                         }
                     } else if (intFace.Equals (typeof (IQuionofilo))) {
                         IQuionofilo frio = (IQuionofilo) animal;
-                        colocouNoHabitat = aquarioGelado.ColocarAnimalAquarioGelado (animal);
+                        colocouNoHabitat = zoo.aquarioGelado.AlocarAnimal(animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (frio.ResistirAoFrio () + " resiste ao frio, então deve ficar no habitat Aquário Gelado.");
                             System.Console.WriteLine ($"Foi possível alocar {frio.ResistirAoFrio()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {aquarioGelado.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.aquarioGelado.capacidadeAtual}");
                             Console.ReadLine ();
                         } else {
                             System.Console.WriteLine ($"Não foi possível alocar {frio.ResistirAoFrio()} no Aquário Gelado.");
@@ -171,12 +159,12 @@ namespace ZooLogico {
                         }
                     } else if (intFace.Equals (typeof (IArboricula))) {
                         IArboricula macaquitos = (IArboricula) animal;
-                        colocouNoHabitat = casaArvore.ColocarAnimalCasaArvore (animal);
+                        colocouNoHabitat = zoo.casaArvore.AlocarAnimal(animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (macaquitos.EscalarArvores () + " escala árvores, então deve ficar no habitat Casa de Árvores.");
                             System.Console.WriteLine ($"Foi possível alocar {macaquitos.EscalarArvores()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {casaArvore.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.casaArvore.capacidadeAtual}");
                             Console.ReadLine ();
                         } else {
                             System.Console.WriteLine ($"Não foi possível alocar {macaquitos.EscalarArvores()} na Casa de Árvores.");
@@ -185,12 +173,12 @@ namespace ZooLogico {
                         }
                     } else if (intFace.Equals (typeof (IAquatico))) {
                         IAquatico aquatico = (IAquatico) animal;
-                        colocouNoHabitat = piscina.ColocarAnimalPiscina (animal);
+                        colocouNoHabitat = zoo.piscina.AlocarAnimal(animal);
 
                         if (colocouNoHabitat) {
                             System.Console.WriteLine (aquatico.Nadar () + " sabe nadar, então deve ficar no habitat Piscina.");
                             System.Console.WriteLine ($"Foi possível alocar {aquatico.Nadar()} no habitat.");
-                            System.Console.WriteLine ($"Vagas restantes: {piscina.capacidadeAtual}");
+                            System.Console.WriteLine ($"Vagas restantes: {zoo.piscina.capacidadeAtual}");
                             Console.ReadLine ();
                         } else {
                             System.Console.WriteLine ($"Não foi possível alocar {aquatico.Nadar()} na Piscina.");

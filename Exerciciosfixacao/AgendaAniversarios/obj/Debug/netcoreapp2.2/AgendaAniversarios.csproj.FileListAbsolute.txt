@@ -10,7 +10,6 @@ C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\agend
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.dll
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.pdb
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosfixacao\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.csprojAssemblyReference.cache
-C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosfixacao\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.csproj.CoreCompileInputs.cache
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosfixacao\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.AssemblyInfoInputs.cache
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosfixacao\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.AssemblyInfo.cs
 C:\Users\42299106812\Documents\Aprendizado C# - Exercícios\Aprendizado-C-\exerciciosfixacao\agendaaniversarios\obj\Debug\netcoreapp2.2\AgendaAniversarios.dll
