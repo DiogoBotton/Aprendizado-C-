@@ -110,7 +110,7 @@ namespace ZooLogico {
                             System.Console.WriteLine (voador.Voar () + " voa, então deve ficar no habitat Gaiola.");
                             System.Console.WriteLine ($"Foi possível alocar {voador.Voar()} no habitat.");
                             System.Console.WriteLine ($"Vagas restantes: {zoo.gaiola.capacidadeAtual}");
-                            Console.ReadLine ();
+                            Console.ReadLine();
 
                             //TODO: Fazer método de listagem de animais em cada Habitat.
                         } else {

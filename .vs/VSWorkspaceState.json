@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ZooLogico",
+    "\\ZooLogico\\Interfaces",
+    "\\ZooLogico\\Models",
+    "\\ZooLogico\\Models\\Habitats"
   ],
+  "SelectedNode": "\\ZooLogico\\ZooLogico.csproj",
   "PreviewInSolutionExplorer": false
 }
