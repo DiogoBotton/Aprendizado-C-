@@ -19,10 +19,11 @@ namespace ZooLogico {
     class Program {
         static void Main (string[] args) {
             Zoologico zoo = new Zoologico();
-
+            
             bool querSair = false;
             int codigo = 0;
             do {
+
                 Console.Clear ();
 
                 codigo = ListarAnimais ();
@@ -103,6 +104,8 @@ namespace ZooLogico {
 
                     if (intFace.Equals (typeof (IVoador))) {
                         IVoador voador = (IVoador) animal;
+
+                        
 
                         colocouNoHabitat = zoo.gaiola.AlocarAnimal(animal);
                         if (colocouNoHabitat) {
